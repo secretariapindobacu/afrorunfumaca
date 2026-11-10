@@ -1,5 +1,10 @@
 // Configure com a URL do Web App publicado no Google Apps Script.
 const SCRIPT_URL = "COLE_A_URL_DO_WEB_APP_AQUI";
+// INSCRIÇÕES: com MODO_TESTE = true o formulário fica sempre aberto (para testar).
+// Com MODO_TESTE = false ele fica fechado até a data de abertura e abre sozinho.
+// Mesmo fechado, dá para testar abrindo o site com ?teste=1 no final do link.
+const MODO_TESTE = true;
+const ABERTURA_INSCRICOES = new Date("2026-11-12T00:00:00-03:00");
 const EVENT_DATE = new Date("2026-11-28T15:30:00-03:00");
 const form = document.getElementById("registrationForm");
 const errorBox = document.getElementById("formError");
@@ -13,7 +18,7 @@ function updateCountdown(){
   const hours = Math.floor(diff % 86400000 / 3600000);
   const minutes = Math.floor(diff % 3600000 / 60000);
   const seconds = Math.floor(diff % 60000 / 1000);
-  document.getElementById("days").textContent = String(days).padStart(3,"0");
+  document.getElementById("days").textContent = pad(days);
   document.getElementById("hours").textContent = pad(hours);
   document.getElementById("minutes").textContent = pad(minutes);
   document.getElementById("seconds").textContent = pad(seconds);
@@ -171,3 +176,11 @@ form.elements.nascimento.addEventListener("change",()=>{
  const show=isUnder16();guardianBox.hidden=!show;
  form.elements.responsavel.required=show;form.elements.autorizacao_responsavel.required=show;
 });
+
+// ---------- ABERTURA DAS INSCRIÇÕES ----------
+(function(){
+ const forcarTeste=new URLSearchParams(location.search).has("teste");
+ const aberto=MODO_TESTE||forcarTeste||Date.now()>=ABERTURA_INSCRICOES.getTime();
+ form.hidden=!aberto;
+ document.getElementById("formClosed").hidden=aberto;
+})();

@@ -11,11 +11,16 @@
   <meta property="og:description" content="Cultura, Esporte e Igualdade em Movimento. Caminhada de 4 km em 28 de novembro, às 15h30, na Comunidade Quilombola de Fumaça. Inscrições a partir de 12 de novembro.">
   <meta property="og:url" content="https://secretariapindobacu.github.io/afrorunfumaca/">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:image" content="https://secretariapindobacu.github.io/afrorunfumaca/compartilhar.jpg">
+  <meta property="og:site_name" content="AFRO RUN Fumaça 2026">
+  <meta property="og:image" content="https://secretariapindobacu.github.io/afrorunfumaca/afrorun-whatsapp.jpg">
+  <meta property="og:image:secure_url" content="https://secretariapindobacu.github.io/afrorunfumaca/afrorun-whatsapp.jpg">
+  <meta property="og:image:alt" content="AFRO RUN Fumaça 2026 — Cultura, Esporte e Igualdade em Movimento">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://secretariapindobacu.github.io/afrorunfumaca/afrorun-whatsapp.jpg">
+  <link rel="image_src" href="https://secretariapindobacu.github.io/afrorunfumaca/afrorun-whatsapp.jpg">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +30,7 @@
 <body>
   <canvas id="confetti" aria-hidden="true"></canvas>
   <header class="topbar" id="topbar">
-    <a class="brand" href="#inicio" aria-label="AFRO RUN — início"><img src="logo.png" alt="Logo AFRO RUN: mulher negra correndo, turbante colorido e lettering AFRORUN"><span class="brand-text">AFRO RUN<small>FUMAÇA · 2026</small></span></a>
+    <a class="brand" href="#inicio" aria-label="AFRO RUN — início"><img src="logo-transparente.png" alt="Logo AFRO RUN: mulher negra correndo, turbante colorido e lettering AFRORUN"><span class="brand-text">AFRO RUN<small>FUMAÇA · 2026</small></span></a>
     <nav class="nav" id="nav" aria-label="Menu principal">
       <a href="#percurso" data-color="orange"><i>01</i>Percurso</a>
       <a href="#local" data-color="turq"><i>02</i>Encontro</a>
@@ -45,30 +50,32 @@
       <div class="speed speed-one"></div><div class="speed speed-two"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="dot"></span> POVOADO DE FUMAÇA · BAHIA · 2026</p>
-        <h1>AFRO<br><em>RUN!</em></h1>
-        <p class="tagline">Cultura, Esporte e Igualdade<br><strong>em Movimento.</strong></p>
-        <div class="keyline"><span>4 KM</span><i></i><span>28.11 · 15H30</span><i></i><span>FUMAÇA</span></div>
-        <a class="button button-dark" href="#inscricao">QUERO CORRER NESSA! <b>↗</b></a>
-      </div>
-      <div class="bib-wrap reveal" aria-label="Número de peito ilustrativo AFRO RUN 2026">
+        <div class="hero-head">
+          <h1>AFRO<br><em>RUN!</em></h1>
+          <div class="bib-wrap" aria-label="Número de peito ilustrativo AFRO RUN 2026">
         <div class="bib">
           <span class="pin pin-a"></span><span class="pin pin-b"></span><span class="pin pin-c"></span><span class="pin pin-d"></span>
           <div class="bib-top"><span>POVOADO QUILOMBOLA DE FUMAÇA</span><span>28 NOV · 15H30</span></div>
-          <img src="logo.png" alt="" class="bib-logo">
+          <img src="logo-transparente.png" alt="" class="bib-logo">
           <div class="bib-word">AFRO <b>RUN</b></div>
           <div class="bib-year">2026</div>
           <div class="bib-bottom"><span>CULTURA · ESPORTE · IGUALDADE</span><span>4 KM</span></div>
         </div>
         <div class="bib-sticker">BORA<br>NESSA! <span>✳</span></div>
       </div>
-      <div class="countdown-wrap">
+        </div>
+        <p class="tagline">Cultura, Esporte e Igualdade<br><strong>em Movimento.</strong></p>
+        <div class="keyline"><span>4 KM</span><i></i><span>28.11 · 15H30</span><i></i><span>FUMAÇA</span></div>
+        <a class="button button-dark" href="#inscricao">QUERO CORRER NESSA! <b>↗</b></a>
+        <div class="countdown-wrap">
         <p class="eyebrow">A CONTAGEM JÁ COMEÇOU</p>
         <div class="countdown" aria-label="Contagem regressiva para o evento">
-          <div><strong id="days">000</strong><small>DIAS</small></div><b>:</b>
+          <div><strong id="days">00</strong><small>DIAS</small></div><b>:</b>
           <div><strong id="hours">00</strong><small>HORAS</small></div><b>:</b>
           <div><strong id="minutes">00</strong><small>MIN</small></div><b>:</b>
           <div><strong id="seconds">00</strong><small>SEG</small></div>
         </div>
+      </div>
       </div>
     </section>
 
@@ -136,6 +143,12 @@
     <section class="signup section-pad reveal" id="inscricao">
       <div class="section-heading"><span class="section-no">04 / FICHA DE LARGADA</span><span class="section-note">GARANTA SEU LUGAR!</span></div>
       <div class="signup-intro"><h2>VEM <em>COM A GENTE!</em></h2><p>Preencha seus dados e prepare o sorriso. A festa é coletiva!</p></div>
+      <div class="form-closed form-bib" id="formClosed" hidden>
+        <div class="form-top"><span>AFRO RUN · FUMAÇA 2026</span><span>LARGADA DAS INSCRIÇÕES</span></div>
+        <p class="mini-label">CALMA, TÁ QUASE!</p>
+        <h3>AS INSCRIÇÕES ABREM<br><em>QUINTA-FEIRA, 12/11</em></h3>
+        <p>Volte aqui a partir de 12 de novembro de 2026 para garantir sua vaga. Camisa oficial para os <b>200 primeiros inscritos</b>!</p>
+      </div>
       <form id="registrationForm" class="form-bib">
         <div class="form-top"><span>AFRO RUN · FUMAÇA 2026</span><span>Nº DE PEITO: <b>?</b></span></div>
         <div class="form-grid">
@@ -169,8 +182,8 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-main"><img src="logo.png" alt="Logo AFRO RUN"><div><h2>BORA <em>NESSA!</em></h2><p>Cultura, Esporte e Igualdade em Movimento</p></div></div>
-    <div class="footer-meta"><p><b>APOIADORES</b><br>[PREENCHER]</p><p><b>CONTATO</b><br>[PREENCHER]</p><p><b>REDES</b><br>[PREENCHER]</p></div>
+    <div class="footer-main"><img src="logo-transparente.png" alt="Logo AFRO RUN"><div><h2>BORA <em>NESSA!</em></h2><p>Cultura, Esporte e Igualdade em Movimento</p></div></div>
+    <div class="footer-meta"><p><b>APOIADORES</b><br>Prefeitura Municipal de Pindobaçu<br>Jau Menezes</p><p><b>CONTATO</b><br>[PREENCHER]</p><p><b>REDES</b><br>[PREENCHER]</p></div>
     <div class="footer-bottom"><span>AFRO RUN — FUMAÇA 2026</span><span>4 KM · 28.11 · 15H30</span></div>
   </footer>
   <a class="mobile-fixed" href="#inscricao">QUERO CORRER NESSA! ↗</a>

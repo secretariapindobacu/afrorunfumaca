@@ -1,70 +1,85 @@
 /**
  * AFRO RUN — Fumaça 2026
- * Google Apps Script conectado a uma planilha.
- * Configure SHEET_ID abaixo com o ID da planilha.
+ * Recebe as inscrições do site e grava na planilha.
+ *
+ * COMO CONFIGURAR (uma vez só):
+ * 1. Crie uma Planilha Google (ex.: "Inscrições Afro Run 2026").
+ * 2. Na planilha: Extensões > Apps Script. Apague o que estiver lá e cole TODO este código. Salve.
+ * 3. Implantar > Nova implantação > engrenagem > "App da Web".
+ *    Executar como: EU   |   Quem pode acessar: QUALQUER PESSOA   > Implantar.
+ * 4. Autorize com sua conta Google (se aparecer "app não verificado": Avançado > Acessar).
+ * 5. Copie a URL que termina em /exec e mande para colocar no site (SCRIPT_URL do script.js).
+ *
+ * Se mudar este código depois: Implantar > Gerenciar implantações > lápis > Versão: Nova > Implantar
+ * (assim a URL continua a mesma).
  */
-const SHEET_ID = "COLE_AQUI_O_ID_DA_PLANILHA";
-const SHEET_NAME = "Inscricoes";
+
+const ABA = "Inscrições";
+const LIMITE_CAMISAS = 200;          // Regulamento: camisa para os 200 primeiros inscritos
+const EMAIL_AVISO = "";              // Opcional: coloque um e-mail para receber aviso a cada inscrição
+
+const CABECALHO = ["Nº", "Data/hora", "Nome", "Nascimento", "CPF", "WhatsApp", "Cidade/Comunidade",
+  "Camisa (tamanho)", "Ganha camisa?", "Sexo", "Menor de 16?", "Responsável", "Autorização do responsável",
+  "Apto(a)", "Uso de imagem", "Aceitou regulamento"];
+
+function aba_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(ABA);
+  if (!sh) {
+    sh = ss.insertSheet(ABA);
+    sh.appendRow(CABECALHO);
+    sh.getRange(1, 1, 1, CABECALHO.length).setFontWeight("bold").setBackground("#2A140B").setFontColor("#FFC400");
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
 
 function doPost(e) {
+  const lock = LockService.getScriptLock();
   try {
-    const data = JSON.parse(e.postData.contents || "{}");
-    const required = ["nome","nascimento","cpf","whatsapp","comunidade","camisa"];
-    required.forEach(key => {
-      if (!data[key]) throw new Error("Campo obrigatório ausente: " + key);
+    const d = JSON.parse((e && e.postData && e.postData.contents) || "{}");
+    ["nome", "nascimento", "cpf", "whatsapp", "comunidade", "camisa"].forEach(function (k) {
+      if (!d[k]) throw new Error("Campo obrigatório ausente: " + k);
     });
-    if (data.aptidao !== true || data.imagem !== true || data.regulamento !== true) {
+    if (d.aptidao !== true || d.imagem !== true || d.regulamento !== true) {
       throw new Error("Declarações obrigatórias não confirmadas.");
     }
-    if (data.menor16 === true && (!data.responsavel || data.autorizacao_responsavel !== true)) {
+    if (d.menor16 === true && (!d.responsavel || d.autorizacao_responsavel !== true)) {
       throw new Error("Menor de 16 anos precisa de responsável e autorização (Art. 6º).");
     }
 
-    // Lock evita números duplicados em envios simultâneos.
-    const lock = LockService.getScriptLock();
-    lock.waitLock(30000);
-    try {
-      const ss = SpreadsheetApp.openById(SHEET_ID);
-      let sheet = ss.getSheetByName(SHEET_NAME);
-      if (!sheet) {
-        sheet = ss.insertSheet(SHEET_NAME);
-        sheet.appendRow(["Número","Data de envio","Nome","Nascimento","CPF","WhatsApp","Cidade/Comunidade","Camisa","Sexo","Aptidão","Autorização de imagem","Aceite do regulamento","Menor de 16","Responsável","Autorização do responsável"]);
-        sheet.setFrozenRows(1);
+    lock.waitLock(30000); // evita número repetido em envios ao mesmo tempo
+    const sh = aba_();
+    const cpf = String(d.cpf).replace(/\D/g, "");
+    const cpfs = sh.getLastRow() > 1 ? sh.getRange(2, 5, sh.getLastRow() - 1, 1).getValues() : [];
+    for (let i = 0; i < cpfs.length; i++) {
+      if (String(cpfs[i][0]).replace(/\D/g, "") === cpf) {
+        return json_({ success: true, number: i + 1, repetida: true });
       }
-      // A linha 1 é o cabeçalho; número seguinte segue o total de linhas.
-      const number = Math.max(1, sheet.getLastRow());
-      sheet.appendRow([
-        number, new Date(), data.nome, data.nascimento, data.cpf, data.whatsapp,
-        data.comunidade, data.camisa, data.sexo || "", Boolean(data.aptidao), Boolean(data.imagem), Boolean(data.regulamento),
-        Boolean(data.menor16), data.responsavel || "", Boolean(data.autorizacao_responsavel)
-      ]);
-      return jsonResponse({success:true, number:number});
-    } finally {
-      lock.releaseLock();
     }
+    const numero = sh.getLastRow(); // linha 1 é o cabeçalho
+    const ganha = numero <= LIMITE_CAMISAS ? "SIM" : "NÃO";
+    sh.appendRow([numero, new Date(), d.nome, d.nascimento, "'" + d.cpf, "'" + d.whatsapp, d.comunidade,
+      d.camisa, ganha, d.sexo || "", d.menor16 ? "SIM" : "NÃO", d.responsavel || "",
+      d.autorizacao_responsavel ? "SIM" : "", "SIM", "SIM", "SIM"]);
+
+    if (EMAIL_AVISO) {
+      MailApp.sendEmail(EMAIL_AVISO, "AFRO RUN: nova inscrição nº " + numero,
+        d.nome + " — WhatsApp " + d.whatsapp + " — " + d.comunidade + " — camisa " + d.camisa + " (ganha: " + ganha + ")");
+    }
+    return json_({ success: true, number: numero, camisa: ganha });
   } catch (err) {
-    return jsonResponse({success:false, message:String(err.message || err)});
+    return json_({ success: false, message: String(err.message || err) });
+  } finally {
+    try { lock.releaseLock(); } catch (x) {}
   }
 }
 
 function doGet() {
-  return jsonResponse({success:true, message:"AFRO RUN inscrições online"});
+  const sh = aba_();
+  return json_({ success: true, total: Math.max(0, sh.getLastRow() - 1) });
 }
 
-function jsonResponse(obj) {
-  return ContentService.createTextOutput(JSON.stringify(obj))
-    .setMimeType(ContentService.MimeType.JSON);
+function json_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
-
-/*
-PUBLICAÇÃO:
-1. Crie uma Planilha Google; copie o ID que aparece entre /d/ e /edit na URL.
-2. Abra Extensões > Apps Script e cole este código no arquivo Code.gs.
-3. Substitua SHEET_ID pelo ID da planilha.
-4. Clique em Implantar > Nova implantação > Tipo: Aplicativo da web.
-5. Executar como: você; acesso: qualquer pessoa.
-6. Autorize o script e copie a URL /exec do Web App.
-7. No script.js do site, substitua SCRIPT_URL pela URL /exec.
-8. Publique index.html, style.css, script.js, logo.png e favicon.png na raiz do repo.
-9. Teste uma inscrição e confira a nova linha na planilha.
-*/

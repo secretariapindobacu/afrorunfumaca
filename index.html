@@ -131,12 +131,17 @@ img{display:block;max-width:100%;height:auto}
 .box p{margin:0}.box ul{margin:0;padding-left:18px}.box li{margin-bottom:8px}
 .box.verm{background:linear-gradient(140deg,#ff7a3d,var(--red));border:0}
 .box.verm h4{color:#fff}.box.verm p{color:#fff4ec}
+.btn-reg{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:12px 20px;border:2.5px solid var(--yellow);border-radius:999px;color:var(--yellow);
+  text-decoration:none;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.03em;background:rgba(255,201,40,.08)}
+.btn-reg:hover{background:var(--yellow);color:var(--ink)}
+.btn-reg svg{width:20px;height:20px;flex:none}
+.faq .btn-reg{margin:0 0 18px}
 .faq{max-width:920px;margin:24px auto 0;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:0 20px}
 .faq summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:900;font-style:italic;text-transform:uppercase;font-size:17px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:after{content:"+";float:right;color:var(--yellow);font-size:24px;line-height:1}
 .faq[open] summary:after{content:"−"}
-.faq ul{margin:0;padding:0 0 14px 18px;font-size:13px;font-weight:600;color:#ecd2c1}.faq li{margin-bottom:8px}
+.faq ul{margin:0;padding:0 0 16px 18px;font-size:13px;font-weight:600;color:#ecd2c1}.faq li{margin-bottom:9px}.faq li b{color:#fff}
 .creditos{text-align:center;font-size:11px;font-weight:600;color:#b8957f;padding:10px 16px 18px;background:#140803}
 @media(max-width:759px){
   .layout{grid-template-columns:1fr}.grade{grid-template-columns:1fr}.full{grid-column:auto}
@@ -201,6 +206,7 @@ img{display:block;max-width:100%;height:auto}
   <div class="cab">
     <h2>Garanta sua <span>inscrição</span></h2>
     <p>Preencha seus dados com atenção. Os campos com asterisco são obrigatórios.</p>
+    <a class="btn-reg" href="regulamento.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M6 2h9l5 5v15H6z"/><path fill="none" stroke="currentColor" stroke-width="2.2" d="M14 2v6h6M9 13h8M9 17h8"/></svg>Ler o regulamento completo</a>
     <div class="camisas"><b id="camisasStatus">200</b><span>camisetas oficiais<br>para os primeiros inscritos</span></div>
   </div>
 
@@ -249,14 +255,20 @@ img{display:block;max-width:100%;height:auto}
   </div>
 
   <details class="faq" id="faq">
-    <summary>Perguntas frequentes e orientações</summary>
+    <summary>Regulamento e perguntas frequentes</summary>
     <ul>
-      <li>A caminhada tem aproximadamente 4 km e não haverá classificação, ranking ou premiação por desempenho.</li>
-      <li>As camisetas oficiais vão para os 200 primeiros inscritos.</li>
-      <li>A entrega das camisetas e a coleta de brinquedos serão no dia do evento; local e horário serão informados nas redes sociais da organização.</li>
-      <li>Avalie suas condições físicas e interrompa a atividade se sentir desconforto.</li>
-      <li>Respeite o patrimônio cultural e natural da Comunidade Quilombola de Fumaça e não descarte lixo no percurso.</li>
+      <li><b>Inscrições:</b> a partir de quinta-feira, 12 de novembro de 2026, por esta página.</li>
+      <li><b>Data e local:</b> 28 de novembro de 2026, saída às 15h30 da Praça dos Potes (Gameleira do Sr. Nequinho), na Comunidade Quilombola de Fumaça. Chegue às 15h15 para as orientações.</li>
+      <li><b>Percurso:</b> aproximadamente 4 km, participativo, sem classificação, ranking ou premiação por desempenho.</li>
+      <li><b>Quem pode participar:</b> pessoas de todas as idades. Menores de 16 anos só com autorização dos pais ou responsáveis, que devem acompanhá-los durante toda a caminhada.</li>
+      <li><b>Camisetas:</b> as 200 camisetas oficiais vão para os 200 primeiros inscritos.</li>
+      <li><b>Entrega das camisetas e coleta de brinquedos:</b> no dia da caminhada, em local e horário divulgados nas redes sociais da organização.</li>
+      <li><b>Estrutura:</b> pontos de hidratação perto do km 1,5 e na chegada, com apoio de moradores e colaboradores no percurso.</li>
+      <li><b>Cuidados:</b> use roupas e calçados confortáveis, beba água, proteja-se do sol e interrompa a caminhada se sentir desconforto.</li>
+      <li><b>Uso de imagem:</b> ao se inscrever, você autoriza o uso gratuito de fotos e vídeos do evento para divulgação.</li>
+      <li><b>Respeito:</b> cuide do meio ambiente e da comunidade e não descarte lixo no percurso. A organização pode alterar programação ou percurso por segurança.</li>
     </ul>
+    <a class="btn-reg" href="regulamento.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M6 2h9l5 5v15H6z"/><path fill="none" stroke="currentColor" stroke-width="2.2" d="M14 2v6h6M9 13h8M9 17h8"/></svg>Abrir o regulamento completo (PDF)</a>
   </details>
 </section>
 

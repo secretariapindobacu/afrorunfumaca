@@ -20,6 +20,47 @@ function aba_() {
   return sh;
 }
 
+// Aba "Resumo": números atualizados sozinhos a cada inscrição
+function resumo_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (ss.getSheetByName("Resumo")) return;
+  const r = ss.insertSheet("Resumo", 0);
+  const I = "'" + ABA + "'!";
+  const linhas = [
+    ["AFRO RUN FUMAÇA 2026 — RESUMO DAS INSCRIÇÕES", ""],
+    ["", ""],
+    ["Total de inscritos", "=COUNTA(" + I + "C2:C)"],
+    ["Camisetas garantidas", "=COUNTIF(" + I + "L2:L,\"SIM\")"],
+    ["Camisetas restantes", "=MAX(0," + LIMITE_CAMISAS + "-B4)"],
+    ["Menores de 16 anos", "=COUNTIF(" + I + "E2:E,\"<16\")"],
+    ["", ""],
+    ["TAMANHO DAS CAMISETAS (só quem ganha)", ""],
+    ["Infantil", "=COUNTIFS(" + I + "H2:H,\"Infantil\"," + I + "L2:L,\"SIM\")"],
+    ["P",  "=COUNTIFS(" + I + "H2:H,\"P\","  + I + "L2:L,\"SIM\")"],
+    ["M",  "=COUNTIFS(" + I + "H2:H,\"M\","  + I + "L2:L,\"SIM\")"],
+    ["G",  "=COUNTIFS(" + I + "H2:H,\"G\","  + I + "L2:L,\"SIM\")"],
+    ["GG", "=COUNTIFS(" + I + "H2:H,\"GG\"," + I + "L2:L,\"SIM\")"],
+    ["XG", "=COUNTIFS(" + I + "H2:H,\"XG\"," + I + "L2:L,\"SIM\")"],
+    ["", ""],
+    ["SEXO", ""],
+    ["Feminino", "=COUNTIF(" + I + "F2:F,\"Feminino\")"],
+    ["Masculino", "=COUNTIF(" + I + "F2:F,\"Masculino\")"],
+    ["Prefiro não informar", "=COUNTIF(" + I + "F2:F,\"Prefiro não informar\")"],
+    ["", ""],
+    ["INSCRITOS POR CIDADE / COMUNIDADE", ""],
+    ["=IFERROR(QUERY(" + I + "I2:I,\"select I, count(I) where I is not null group by I order by count(I) desc label count(I) ''\",0),\"\")", ""]
+  ];
+  r.getRange(1, 1, linhas.length, 2).setValues(linhas);
+  r.getRange("A1").setFontSize(14).setFontWeight("bold").setFontColor("#B5451B");
+  ["A3:A6","A8","A16","A21"].forEach(x => r.getRange(x).setFontWeight("bold"));
+  r.getRange("B3:B6").setFontWeight("bold").setFontSize(13);
+  r.getRange("A8:B8").setBackground("#FFC928"); r.getRange("A16:B16").setBackground("#FFC928"); r.getRange("A21:B21").setBackground("#FFC928");
+  r.setColumnWidth(1, 300); r.setColumnWidth(2, 120);
+}
+
+// Rode esta função uma vez pelo menu (Executar) para criar as abas antes da primeira inscrição
+function configurar() { aba_(); resumo_(); }
+
 function json_(o) {
   return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
 }
@@ -42,6 +83,7 @@ function doPost(e) {
     if (!d.nome || !d.nascimento || !d.whatsapp) return json_({ ok: false, erro: "Dados incompletos." });
 
     const sh = aba_();
+    resumo_();
     const linhas = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, 4).getValues() : [];
 
     // Evita inscrição repetida (mesmo nome + mesma data de nascimento)

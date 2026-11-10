@@ -1,342 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#1c0b05">
-<title>Afro Run Fumaça 2026 | Cultura, esporte e igualdade</title>
-<meta name="description" content="O melhor festival está chegando! Afro Run Fumaça 2026: caminhada de 4 km em 28 de novembro, às 15h30, no Povoado Quilombola de Fumaça, Pindobaçu-BA. Inscrições a partir de 12 de novembro.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://secretariapindobacu.github.io/afrorunfumaca/">
-<meta property="og:site_name" content="Afro Run Fumaça 2026">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Inscrições Afro Run Fumaça 2026">
-<meta property="og:description" content="Cultura, esporte e igualdade em movimento. Caminhada de 4 km em 28 de novembro, às 15h30, no Povoado Quilombola de Fumaça. Inscrições a partir de 12 de novembro.">
-<meta property="og:image" content="https://secretariapindobacu.github.io/afrorunfumaca/compartilhar.jpg">
-<meta property="og:image:secure_url" content="https://secretariapindobacu.github.io/afrorunfumaca/compartilhar.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://secretariapindobacu.github.io/afrorunfumaca/compartilhar.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Montserrat:wght@500;600;700;800;900&family=Kaushan+Script&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#1c0b05;--bg2:#2a1209;--card:#251008;--line:#5b2a12;
-  --yellow:#ffc928;--red:#d8161c;--wine:#8e0f12;--orange:#f26b1d;
-  --green1:#45d33c;--green2:#1a9a22;--cream:#fff8ee;--ink:#241008;--muted:#7a5a49;
-  --cond:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Montserrat',system-ui,sans-serif;--script:'Kaushan Script',cursive;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:#fff;font-family:var(--body);line-height:1.5}
-img{display:block;max-width:100%;height:auto}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.tribal{background-color:#4a1d0c;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23b4521c' stroke-width='5'%3E%3Cpath d='M0 0L24 24 0 48M24 0L48 24 24 48'/%3E%3C/g%3E%3C/svg%3E");background-size:30px 30px}
-/* fundo das laterais no computador */
-@media(min-width:760px){body{background-image:linear-gradient(90deg,rgba(0,0,0,.35),transparent 18%,transparent 82%,rgba(0,0,0,.35))}}
-.pagina{max-width:1024px;margin:0 auto;position:relative;background:var(--bg)}
-
-/* ======= COMPUTADOR: arte idêntica com áreas clicáveis ======= */
-.desk{display:block}.mob{display:none}
-.arte{position:relative}
-.arte img{width:100%}
-.hot{position:absolute;display:block;border-radius:999px}
-.hot:focus-visible{outline:3px solid #fff;outline-offset:2px}
-#evento-anc{position:absolute;top:47%;left:0}
-
-/* ======= CELULAR ======= */
-@media(max-width:759px){
-  .desk{display:none}.mob{display:block}
-}
-.fade{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);
-  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-composite:intersect}
-.fade-v{-webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent)}
-.mob{background:radial-gradient(ellipse 120% 40% at 50% 55%,#3a1608,transparent 70%),#1c0b05}
-.m-nav{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:rgba(18,7,3,.96);border-bottom:1px solid rgba(255,201,40,.25)}
-.m-nav img{width:96px}
-.m-menu-btn{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;border-radius:12px;font-size:22px;padding:6px 12px}
-.m-links{display:none;position:absolute;top:100%;left:10px;right:10px;background:#1c0b05;border:1px solid var(--line);border-radius:18px;padding:12px;flex-direction:column;gap:4px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
-.m-links.open{display:flex}
-.m-links a{color:#fff;text-decoration:none;font-weight:800;font-size:15px;text-align:center;padding:10px;border-radius:99px}
-.m-links a.on{background:var(--yellow);color:var(--ink)}
-.m-links a.reg{border:2px solid var(--yellow);color:var(--yellow)}
-.m-hero{background:url(img/m-galera.jpg) bottom center/cover no-repeat;position:relative}
-.m-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,11,5,.0),rgba(28,11,5,.15) 60%,rgba(28,11,5,.85))}
-.m-hero>*{position:relative}
-.m-titulo{width:100%;padding:8px 6px 0}
-.m-logos{width:86%;margin:-6px auto 0}
-.m-info{margin:14px 12px 0;background:linear-gradient(180deg,#2b120a,#1b0904);border:1.5px solid #3d1a0c;border-radius:22px;padding:6px 14px;box-shadow:0 10px 26px rgba(0,0,0,.45)}
-.m-item{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:2px solid rgba(255,201,40,.75)}
-.m-item:last-child{border:0}
-.m-item svg{width:44px;height:44px;flex:none}
-.m-item small{display:block;font-family:var(--body);font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#fff}
-.m-item strong{display:block;font-family:var(--cond);font-weight:800;font-size:26px;line-height:1.05;text-transform:uppercase}
-.m-item strong.mix{text-transform:none;font-size:23px}
-.m-item span{display:block;font-family:var(--cond);font-weight:600;font-size:16px;line-height:1.2;color:#f6e6da}
-.m-faixa{width:100%;margin-top:14px}
-.m-camisa{width:94%;margin:4px auto 0}
-.m-botao{display:block;width:88%;margin:10px auto 0}
-.m-faca{width:76%;margin:0 auto}
-
-/* ======= INSCRIÇÃO (igual nos dois) ======= */
-.borda{height:20px;border-block:3px solid #b4521c}
-.inscricao{padding:40px 16px 46px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(242,107,29,.22),transparent 70%),var(--bg)}
-.cab{text-align:center;margin-bottom:24px}
-.cab .kick{font-family:var(--script);color:var(--yellow);font-size:26px;line-height:1}
-.cab h2{margin:6px 0 4px;font-family:var(--body);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(30px,6vw,46px);line-height:1;color:#fff;
-  text-shadow:0 3px 0 var(--red),0 6px 0 var(--wine),0 10px 18px rgba(0,0,0,.45)}
-.cab h2 span{color:var(--yellow)}
-.cab p{margin:10px auto 0;max-width:560px;color:#e9cdbb;font-size:14px;font-weight:600}
-.camisas{display:flex;align-items:center;justify-content:center;gap:12px;margin:16px auto 0;max-width:520px;background:#000;border:2.5px solid var(--yellow);border-radius:20px;padding:10px 18px}
-.camisas b{font-family:var(--cond);font-weight:800;font-size:46px;line-height:1;color:var(--yellow)}
-.camisas span{font-family:var(--cond);font-weight:700;font-size:18px;line-height:1.1;text-transform:uppercase;text-align:left}
-.fechado{display:none;max-width:720px;margin:0 auto 18px;text-align:center;background:var(--yellow);color:var(--ink);border-radius:20px;padding:18px}
-.fechado strong{display:block;font-family:var(--body);font-weight:900;font-style:italic;font-size:22px;text-transform:uppercase}
-.fechado p{margin:4px 0 0;font-weight:700;font-size:13px}
-.layout{max-width:920px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}
-.form,.sucesso{background:var(--cream);color:var(--ink);border-radius:26px;padding:clamp(18px,3vw,30px);border:3px solid var(--yellow);box-shadow:0 18px 44px rgba(0,0,0,.45)}
-.form h3{margin:0 0 4px;font-family:var(--body);font-weight:900;font-style:italic;font-size:26px;text-transform:uppercase;color:var(--red)}
-.obrig{font-size:11px;color:var(--muted);font-weight:700;margin:0}
-.grade{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-.full{grid-column:1/-1}
-.campo label{display:block;margin:13px 0 6px;font-size:13px;font-weight:800}
-.campo em,.check em{color:var(--red);font-style:normal}
-.campo input,.campo select{width:100%;height:48px;border:2px solid #ecd9c6;border-radius:12px;background:#fff;padding:0 13px;font:600 15px var(--body);color:var(--ink)}
-.campo input:focus,.campo select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,107,29,.16)}
-.menor{display:none;background:#fff1c2;border:2px solid var(--yellow);border-radius:18px;padding:10px 14px 14px;margin-top:16px}
-.menor.on{display:block}
-.menor h4{margin:4px 0 0;font-weight:900;font-style:italic;text-transform:uppercase;font-size:16px;color:#6b350d}
-.menor p{margin:4px 0 0;font-size:12px;font-weight:600;color:#6b4a14}
-.check{display:flex;align-items:flex-start;gap:10px;margin:15px 0 0;font-size:13px;line-height:1.45;font-weight:600;color:#4a3022}
-.check input{width:20px;height:20px;flex:none;accent-color:var(--green2);margin:1px 0 0}
-.check a{color:var(--red);font-weight:900}
-.enviar{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;margin-top:22px;border:3px solid #9af58f;border-radius:999px;cursor:pointer;
-  background:linear-gradient(180deg,var(--green1),var(--green2));color:#fff;padding:14px 18px;font:900 22px var(--body);text-transform:uppercase;line-height:1.1;
-  text-shadow:0 2px 0 rgba(0,70,0,.4);box-shadow:0 6px 0 #0d6413,0 14px 26px rgba(0,0,0,.3)}
-.enviar svg{width:30px;height:30px;flex:none}
-.enviar:active{transform:translateY(3px);box-shadow:0 3px 0 #0d6413}
-.enviar:disabled{opacity:.65;cursor:wait}
-.erro{display:none;margin:14px 0 0;background:#ffe4e1;color:#991b1b;border:2px solid #f2aaa3;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800}
-.sucesso{display:none;text-align:center}
-.sucesso h3{margin:0;font-weight:900;font-style:italic;font-size:30px;text-transform:uppercase;color:var(--green2)}
-.sucesso .num{font-family:var(--cond);font-weight:800;font-size:76px;line-height:1;margin:8px 0;color:var(--red)}
-.sucesso p{color:var(--muted);font-weight:600;font-size:14px}
-.lado{display:grid;gap:16px}
-.box{border-radius:22px;padding:20px;background:var(--card);border:1.5px solid var(--line)}
-.box h4{margin:0 0 10px;font-weight:900;font-style:italic;text-transform:uppercase;font-size:19px;color:var(--yellow)}
-.box p,.box li{font-size:13px;font-weight:600;color:#ecd2c1}
-.box p{margin:0}.box ul{margin:0;padding-left:18px}.box li{margin-bottom:8px}
-.box.verm{background:linear-gradient(140deg,#ff7a3d,var(--red));border:0}
-.box.verm h4{color:#fff}.box.verm p{color:#fff4ec}
-.btn-reg{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:12px 20px;border:2.5px solid var(--yellow);border-radius:999px;color:var(--yellow);
-  text-decoration:none;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.03em;background:rgba(255,201,40,.08)}
-.btn-reg:hover{background:var(--yellow);color:var(--ink)}
-.btn-reg svg{width:20px;height:20px;flex:none}
-.faq .btn-reg{margin:0 0 18px}
-.faq{max-width:920px;margin:24px auto 0;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:0 20px}
-.faq summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:900;font-style:italic;text-transform:uppercase;font-size:17px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";float:right;color:var(--yellow);font-size:24px;line-height:1}
-.faq[open] summary:after{content:"−"}
-.faq ul{margin:0;padding:0 0 16px 18px;font-size:13px;font-weight:600;color:#ecd2c1}.faq li{margin-bottom:9px}.faq li b{color:#fff}
-.creditos{text-align:center;font-size:11px;font-weight:600;color:#b8957f;padding:10px 16px 18px;background:#140803}
-@media(max-width:759px){
-  .layout{grid-template-columns:1fr}.grade{grid-template-columns:1fr}.full{grid-column:auto}
-  .inscricao{padding:32px 12px 38px}.enviar{font-size:19px}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF4E2">
+  <title>AFRO RUN — Fumaça 2026 | Cultura, Esporte e Igualdade em Movimento</title>
+  <meta name="description" content="Bora caminhar, dançar ou correr! AFRO RUN — Fumaça 2026: caminhada participativa de 4 km na Comunidade Quilombola de Fumaça, Pindobaçu–BA, em 28 de novembro às 15h30. Inscrições a partir de 12/11.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AFRO RUN — Fumaça 2026">
+  <meta property="og:description" content="Cultura, Esporte e Igualdade em Movimento. Caminhada de 4 km em 28 de novembro, às 15h30, na Comunidade Quilombola de Fumaça. Inscrições a partir de 12 de novembro.">
+  <meta property="og:url" content="https://secretariapindobacu.github.io/afrorunfumaca/">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://secretariapindobacu.github.io/afrorunfumaca/compartilhar.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="pagina">
-<h1 class="sr">Afro Run Fumaça 2026 — O melhor festival está chegando! Inscrições</h1>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#inicio" aria-label="AFRO RUN — início"><img src="logo.png" alt="Logo AFRO RUN: mulher negra correndo, turbante colorido e lettering AFRORUN"><span class="brand-text">AFRO RUN<small>FUMAÇA · 2026</small></span></a>
+    <nav class="nav" id="nav" aria-label="Menu principal">
+      <a href="#percurso" data-color="orange"><i>01</i>Percurso</a>
+      <a href="#local" data-color="turq"><i>02</i>Encontro</a>
+      <a href="#regulamento" data-color="sun"><i>03</i>Regulamento</a>
+      <a href="#inscricao" data-color="pink"><i>04</i>Inscrição</a>
+      <div class="nav-extra">
+        <p><b>28.11.2026 · 15H30</b><br>Povoado Quilombola de Fumaça</p>
+        <a class="button button-dark" href="#inscricao">QUERO CORRER NESSA! <b>↗</b></a>
+      </div>
+    </nav>
+    <a class="top-cta" href="#inscricao">INSCREVA-SE <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </header>
 
-<!-- ========== COMPUTADOR ========== -->
-<div class="desk" id="inicio">
-  <div class="arte">
-    <img src="img/topo.jpg" width="1024" height="1222" alt="O melhor festival está chegando! AfroRun. Caminhada de 4 km, participativa e sem competição. 28 de novembro de 2026 às 15h30, no Povoado Quilombola de Fumaça. Inscrições antecipadas: é nesta quinta-feira, 12 de novembro de 2026. Distribuição das 200 primeiras camisetas oficiais.">
-    <a class="hot" href="#inicio" style="left:34.2%;top:2.0%;width:8.0%;height:3.0%" aria-label="Início"></a>
-    <a class="hot" href="#evento" style="left:44.5%;top:2.0%;width:12.8%;height:3.0%" aria-label="Sobre o evento"></a>
-    <a class="hot" href="#inscricao" style="left:59.6%;top:2.0%;width:9.4%;height:3.0%" aria-label="Inscrições"></a>
-    <a class="hot" href="#faq" style="left:72.3%;top:2.0%;width:5.6%;height:3.0%" aria-label="FAQ"></a>
-    <a class="hot" href="#contato" style="left:81.0%;top:2.0%;width:9.4%;height:3.0%" aria-label="Contato"></a>
-    <a class="hot" href="#inscricao" style="left:59.8%;top:83.6%;width:37.2%;height:9.0%" aria-label="Garanta sua inscrição"></a>
-    <span id="evento" style="position:absolute;top:46%;left:0"></span>
-  </div>
-</div>
-
-<!-- ========== CELULAR ========== -->
-<div class="mob">
-  <nav class="m-nav" aria-label="Menu">
-    <a href="#topo-m"><img src="img/m-logo.png" width="72" height="72" alt="AfroRun" style="width:72px"></a>
-    <button class="m-menu-btn" id="menuBtn" aria-expanded="false" aria-label="Abrir menu">☰</button>
-    <div class="m-links" id="menuLinks">
-      <a class="on" href="#topo-m">Início</a><a href="#evento-m">Sobre o Evento</a><a href="#inscricao">Inscrições</a><a href="#faq">FAQ</a><a href="regulamento.pdf" target="_blank" rel="noopener" class="reg">📄 Regulamento</a><a href="#contato">Contato</a>
-    </div>
-  </nav>
-  <div class="m-hero" id="topo-m">
-    <img class="m-titulo fade" src="img/m-titulo.jpg" width="432" height="331" alt="O melhor festival está chegando! Cultura, esporte e igualdade em movimento!">
-    <img class="m-logos fade" src="img/m-logos.jpg" width="490" height="498" alt="AfroRun">
-  </div>
-  <div class="m-info" id="evento-m">
-    <div class="m-item">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="30" cy="7" r="5" fill="#ffc928"/><path fill="#ffc928" d="M22 14l9 2 4 8 7 1-1 4-9-1-3-5-3 7 6 5-1 11h-5l1-9-7-5-3 7H6v-4h7l5-12-3 1-3 6-4-2 5-9z"/></svg>
-      <div><small>Caminhada</small><strong>4 km</strong><span>Participativa e sem competição</span></div>
-    </div>
-    <div class="m-item">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="34" rx="5" fill="none" stroke="#ffc928" stroke-width="4"/><path stroke="#ffc928" stroke-width="4" d="M14 4v9M34 4v9M5 18h38"/><g fill="#ffc928"><rect x="12" y="23" width="6" height="5"/><rect x="21" y="23" width="6" height="5"/><rect x="30" y="23" width="6" height="5"/><rect x="12" y="32" width="6" height="5"/><rect x="21" y="32" width="6" height="5"/><rect x="30" y="32" width="6" height="5"/></g></svg>
-      <div><small>Data do evento</small><strong>28 de novembro de 2026</strong><strong>Às 15h30</strong></div>
-    </div>
-    <div class="m-item">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#ffc928" d="M24 3C15.7 3 9 9.6 9 17.8 9 29 24 45 24 45s15-16 15-27.2C39 9.6 32.3 3 24 3z"/><circle cx="24" cy="17.5" r="6" fill="#241008"/></svg>
-      <div><small>Local</small><strong class="mix">Povoado Quilombola de Fumaça</strong></div>
-    </div>
-  </div>
-  <img class="m-faixa fade-v" src="img/m-faixa.jpg" width="995" height="270" alt="Inscrições antecipadas: é nesta quinta-feira! 12 de novembro de 2026">
-  <img class="m-camisa fade" src="img/m-camisa.jpg" width="545" height="200" alt="Distribuição das 200 primeiras camisetas oficiais">
-  <a class="m-botao" href="#inscricao"><img class="fade" src="img/m-botao.jpg" width="390" height="120" alt="Garanta sua inscrição"></a>
-  <img class="m-faca fade" src="img/m-faca.jpg" width="325" height="87" alt="Faça parte desse movimento!">
-</div>
-
-<!-- ========== INSCRIÇÃO ========== -->
-<div class="tribal borda"></div>
-<section class="inscricao" id="inscricao">
-  <div class="cab">
-    <h2>Garanta sua <span>inscrição</span></h2>
-    <p>Preencha seus dados com atenção. Os campos com asterisco são obrigatórios.</p>
-    <a class="btn-reg" href="regulamento.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M6 2h9l5 5v15H6z"/><path fill="none" stroke="currentColor" stroke-width="2.2" d="M14 2v6h6M9 13h8M9 17h8"/></svg>Ler o regulamento completo</a>
-    <div class="camisas"><b id="camisasStatus">200</b><span>camisetas oficiais<br>para os primeiros inscritos</span></div>
-  </div>
-
-  <div class="fechado" id="fechado">
-    <strong>Inscrições a partir de 12 de novembro</strong>
-    <p>O formulário será liberado nesta data. Volte aqui para garantir sua participação!</p>
-  </div>
-
-  <div class="layout">
-    <div>
-      <form class="form" id="form" novalidate>
-        <h3>Ficha de inscrição</h3>
-        <p class="obrig">* Campos obrigatórios</p>
-        <div class="grade">
-          <div class="campo full"><label for="nome">Nome completo <em>*</em></label><input id="nome" autocomplete="name" placeholder="Digite seu nome completo"></div>
-          <div class="campo"><label for="nascimento">Data de nascimento <em>*</em></label><input id="nascimento" type="date"></div>
-          <div class="campo"><label for="sexo">Sexo <em>*</em></label><select id="sexo"><option value="">Selecione</option><option>Feminino</option><option>Masculino</option><option>Prefiro não informar</option></select></div>
-          <div class="campo"><label for="whatsapp">WhatsApp com DDD <em>*</em></label><input id="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(74) 9 0000-0000"></div>
-          <div class="campo"><label for="camisa">Tamanho da camiseta <em>*</em></label><select id="camisa"><option value="">Selecione</option><option>Infantil</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>XG</option></select></div>
-          <div class="campo full"><label for="cidade">Cidade / comunidade <em>*</em></label><input id="cidade" placeholder="Ex.: Fumaça, Pindobaçu"></div>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="speed speed-one"></div><div class="speed speed-two"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="dot"></span> POVOADO DE FUMAÇA · BAHIA · 2026</p>
+        <h1>AFRO<br><em>RUN!</em></h1>
+        <p class="tagline">Cultura, Esporte e Igualdade<br><strong>em Movimento.</strong></p>
+        <div class="keyline"><span>4 KM</span><i></i><span>28.11 · 15H30</span><i></i><span>FUMAÇA</span></div>
+        <a class="button button-dark" href="#inscricao">QUERO CORRER NESSA! <b>↗</b></a>
+      </div>
+      <div class="bib-wrap reveal" aria-label="Número de peito ilustrativo AFRO RUN 2026">
+        <div class="bib">
+          <span class="pin pin-a"></span><span class="pin pin-b"></span><span class="pin pin-c"></span><span class="pin pin-d"></span>
+          <div class="bib-top"><span>POVOADO QUILOMBOLA DE FUMAÇA</span><span>28 NOV · 15H30</span></div>
+          <img src="logo.png" alt="" class="bib-logo">
+          <div class="bib-word">AFRO <b>RUN</b></div>
+          <div class="bib-year">2026</div>
+          <div class="bib-bottom"><span>CULTURA · ESPORTE · IGUALDADE</span><span>4 KM</span></div>
         </div>
-        <div class="menor" id="menorBox">
-          <h4>Participante menor de 16 anos</h4>
-          <p>É necessária a autorização do responsável, que deverá acompanhar o menor durante toda a caminhada.</p>
-          <div class="campo"><label for="responsavel">Nome do pai, mãe ou responsável <em>*</em></label><input id="responsavel" autocomplete="name"></div>
-          <div class="campo"><label for="telResp">WhatsApp do responsável <em>*</em></label><input id="telResp" type="tel" inputmode="numeric" placeholder="(74) 9 0000-0000"></div>
-          <label class="check"><input type="checkbox" id="autorizaResp"><span>Sou o responsável legal, autorizo a participação e vou acompanhar o menor durante toda a caminhada.</span></label>
+        <div class="bib-sticker">BORA<br>NESSA! <span>✳</span></div>
+      </div>
+      <div class="countdown-wrap">
+        <p class="eyebrow">A CONTAGEM JÁ COMEÇOU</p>
+        <div class="countdown" aria-label="Contagem regressiva para o evento">
+          <div><strong id="days">000</strong><small>DIAS</small></div><b>:</b>
+          <div><strong id="hours">00</strong><small>HORAS</small></div><b>:</b>
+          <div><strong id="minutes">00</strong><small>MIN</small></div><b>:</b>
+          <div><strong id="seconds">00</strong><small>SEG</small></div>
         </div>
-        <label class="check"><input type="checkbox" id="aceite"><span>Li e concordo com o <a href="regulamento.pdf" target="_blank" rel="noopener">Regulamento oficial</a> e assumo a responsabilidade pela minha participação. <em>*</em></span></label>
-        <label class="check"><input type="checkbox" id="aceiteImagem"><span>Autorizo o uso gratuito de fotos e vídeos em que eu apareça, para fins institucionais, informativos e de divulgação do evento, conforme o regulamento. <em>*</em></span></label>
-        <button class="enviar" type="submit" id="enviar">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="#fff" stroke-width="3"/><path d="M9 16.5l5 5 9-10" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span id="enviarTxt">Confirmar inscrição</span>
-        </button>
-        <p class="erro" id="erro" role="alert" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Bora caminhar. Cultura. Esporte. Igualdade. Em movimento."><div class="marquee-track">BORA CAMINHAR · CULTURA · ESPORTE · IGUALDADE · EM MOVIMENTO · BORA CAMINHAR · CULTURA · ESPORTE · IGUALDADE · EM MOVIMENTO ·</div></div>
+
+    <section class="early-bird reveal">
+      <div class="finish-pattern" aria-hidden="true"></div>
+      <span class="mini-label">MARCA NA AGENDA!</span>
+      <h2>INSCRIÇÕES<br><em>A PARTIR DE 12/11</em></h2>
+      <div class="ribbon"><span>✳</span> QUINTA-FEIRA, 12/11/2026 <span>✳</span></div>
+      <p class="early-note">Camisa oficial garantida para os <b>200 primeiros inscritos</b>!</p>
+    </section>
+
+    <section class="route section-pad reveal" id="percurso">
+      <div class="section-heading"><span class="section-no">01 / O PERCURSO</span><span class="section-note">VAI NO SEU RITMO!</span></div>
+      <div class="route-title"><h2>4 <em>KM</em></h2><div class="route-copy"><p>Participativa e sem competição.</p><strong>Vai no seu ritmo:</strong> caminhando, dançando ou correndo. O importante é chegar junto! Tem água no km 1,5 e na chegada.</div></div>
+      <div class="track" id="track">
+        <div class="track-line"></div><div class="track-progress" id="trackProgress"></div>
+        <div class="runner" id="runner" aria-label="Ícone de corredor na trilha">🏃🏿</div>
+        <div class="km-mark m0"><b>SAÍDA</b><span>0 KM</span></div><div class="km-mark m1"><b>1 KM</b></div><div class="water w1" title="Ponto de hidratação"><span aria-hidden="true">💧</span><b>ÁGUA</b><small>KM 1,5</small></div><div class="water w2" title="Hidratação na chegada"><span aria-hidden="true">💧</span></div><div class="km-mark m2"><b>2 KM</b></div><div class="km-mark m3"><b>3 KM</b></div><div class="km-mark m4"><b>CHEGADA</b><span>4 KM</span></div>
+      </div>
+      <div class="drum-graphic" aria-hidden="true"><span></span><span></span><span></span><b>TOCA<br>O TAMBOR!</b></div>
+    </section>
+
+    <section class="where section-pad reveal" id="local">
+      <div class="section-heading"><span class="section-no">02 / ENCONTRO</span><span class="section-note">É DIA DE FESTA!</span></div>
+      <div class="where-grid">
+        <div><p class="mini-label">QUANDO?</p><h2>28<span>.11</span><br><em>2026</em></h2><div class="time">15H30</div><p class="meet">Concentração às <b>15h15</b><br>Chegue 15 min antes!</p></div>
+        <div class="place"><p class="mini-label">ONDE?</p><h3>Praça<br>dos Potes<br><em>Fumaça</em></h3><p class="meet">Gameleira do Sr. Nequinho · Comunidade Quilombola de Fumaça, Pindobaçu–BA<br><b>Saída e chegada no mesmo lugar</b></p><a class="button button-color" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fuma%C3%A7a%2C%20Pindoba%C3%A7u%20-%20BA">VER NO MAPA ↗</a></div>
+      </div>
+      <div class="checker" aria-hidden="true"></div>
+    </section>
+
+    <section class="rules section-pad" id="regulamento">
+      <div class="section-heading"><span class="section-no">03 / REGULAMENTO</span><span class="section-note">COMBINADO NÃO SAI CARO!</span></div>
+      <div class="rules-layout">
+        <div class="rules-intro reveal">
+          <h2>AS REGRAS<br><em>DA FESTA</em></h2>
+          <p>Regulamento oficial da Comissão Organizadora. Leia com atenção: ao se inscrever, você declara estar ciente e de acordo com tudo aqui (Art. 8º).</p>
+          <ul class="rules-quick">
+            <li class="q-orange"><b>4 KM</b><span>Sem competição, sem premiação</span></li>
+            <li class="q-turq"><b>200 CAMISAS</b><span>Para os 200 primeiros inscritos</span></li>
+            <li class="q-pink"><b>15H15</b><span>Chegue 15 min antes na concentração</span></li>
+            <li class="q-sun"><b>-16 ANOS</b><span>Só com autorização e companhia do responsável</span></li>
+          </ul>
+          <div class="rules-actions">
+            <button class="button button-color" type="button" id="toggleRules">ABRIR TUDO <b>＋</b></button>
+            <button class="button button-ghost" type="button" id="printRules">IMPRIMIR ⎙</button>
+          </div>
+        </div>
+        <div class="rules-list reveal">
+          <details open><summary><i>CAP. I</i>Do evento</summary><div class="rule-body"><p><b class="art">Art. 1º.</b> A AFRO RUN FUMAÇA 2026 será realizada no dia <strong>28 de novembro de 2026</strong>, na <strong>Comunidade Quilombola de Fumaça</strong>, zona rural do município de Pindobaçu–BA.</p><p><b class="art">Art. 2º.</b> A caminhada terá início às <strong>15h30</strong>, com saída e chegada na <strong>Praça dos Potes (Gameleira do Sr. Nequinho)</strong>, na Comunidade de Fumaça.</p><p class="pu"><b>Parágrafo único.</b> O horário de saída poderá sofrer alterações, caso necessário, mediante comunicação da Comissão Organizadora.</p><p><b class="art">Art. 3º.</b> O percurso terá aproximadamente <strong>4 km</strong>, sendo realizado em caráter participativo, sem finalidade competitiva, classificação ou premiação por desempenho.</p><p class="pu"><b>Parágrafo único.</b> Serão disponibilizadas camisas oficiais do evento para os <strong>200 primeiros participantes inscritos</strong>.</p></div></details>
+          <details><summary><i>CAP. II</i>Da estrutura e do apoio</summary><div class="rule-body"><p><b class="art">Art. 4º.</b> A organização disponibilizará <strong>pontos de hidratação</strong> durante o percurso, aproximadamente no <strong>km 1,5</strong>, e na chegada.</p><p><b class="art">Art. 5º.</b> A caminhada contará com o apoio de moradores e colaboradores, que auxiliarão na orientação dos participantes ao longo do percurso.</p></div></details>
+          <details><summary><i>CAP. III</i>Das inscrições</summary><div class="rule-body"><p><b class="art">Art. 6º.</b> Poderão participar da AFRO RUN FUMAÇA 2026 pessoas de diferentes faixas etárias, mediante inscrição e concordância com as disposições deste Regulamento.</p><p class="pu"><b>Parágrafo único.</b> A participação de <strong>menores de 16 (dezesseis) anos</strong> deverá ocorrer mediante autorização expressa dos pais ou responsáveis legais, que deverão acompanhar o menor durante a caminhada, sendo de sua responsabilidade os cuidados e a supervisão necessários.</p><p><b class="art">Art. 7º.</b> As inscrições serão realizadas por meio de link disponibilizado pela Comissão Organizadora, a partir do dia <strong>12 de novembro de 2026</strong>.</p><p><b class="art">Art. 8º.</b> Ao realizar a inscrição, o participante declara estar ciente e de acordo com as disposições deste Regulamento, assumindo a responsabilidade por sua participação e pelas condições pessoais necessárias à realização da caminhada.</p></div></details>
+          <details><summary><i>CAP. IV</i>Da entrega das camisas e da coleta de brinquedos</summary><div class="rule-body"><p><b class="art">Art. 9º.</b> A entrega das camisas e a coleta de brinquedos serão realizadas no dia da caminhada, em local e horário a serem definidos e divulgados previamente pela Comissão Organizadora, por meio de suas redes sociais.</p><p><b class="art">Art. 10.</b> A inscrição na AFRO RUN FUMAÇA 2026 (4 km) dará direito a 1 (uma) camisa oficial do evento, destinada aos <strong>200 primeiros participantes inscritos</strong>.</p></div></details>
+          <details><summary><i>CAP. V</i>Das orientações aos participantes</summary><div class="rule-body"><p><b class="art">Art. 11.</b> Os participantes deverão comparecer ao local de concentração com, pelo menos, 15 (quinze) minutos de antecedência, ou seja, às <strong>15h15</strong>, para receber as orientações iniciais da organização.</p><p><b class="art">Art. 12.</b> Os participantes deverão seguir as orientações da Comissão Organizadora e respeitar o percurso estabelecido, contribuindo para a segurança e o bom andamento da caminhada.</p><p><b class="art">Art. 13.</b> Recomenda-se o uso de roupas e calçados confortáveis, além da adoção de cuidados pessoais, como hidratação adequada e proteção contra o sol.</p><p><b class="art">Art. 14.</b> Cada participante deverá avaliar suas próprias condições físicas antes e durante a caminhada, podendo interromper sua participação caso sinta desconforto, cansaço excessivo ou qualquer condição que comprometa seu bem-estar.</p></div></details>
+          <details><summary><i>CAP. VI</i>Do uso de imagem</summary><div class="rule-body"><p><b class="art">Art. 15.</b> Ao realizar a inscrição e participar do evento, o participante autoriza, gratuitamente, o registro e a utilização de sua imagem em fotografias e vídeos produzidos durante a AFRO RUN FUMAÇA 2026, para fins institucionais, informativos e de divulgação do evento, em meios de comunicação e redes sociais da organização.</p></div></details>
+          <details><summary><i>CAP. VII</i>Das disposições gerais</summary><div class="rule-body"><p><b class="art">Art. 16.</b> A Comissão Organizadora contará com o apoio de moradores e colaboradores para orientação dos participantes, não sendo possível garantir acompanhamento individual durante todo o percurso.</p><p><b class="art">Art. 17.</b> Os participantes deverão respeitar o meio ambiente, a comunidade local e o patrimônio cultural e natural da Comunidade Quilombola de Fumaça, evitando o descarte inadequado de resíduos ao longo do percurso.</p><p><b class="art">Art. 18.</b> A Comissão Organizadora reserva-se o direito de realizar alterações na programação ou no percurso, caso necessário, visando à segurança e ao bom andamento do evento.</p><p><b class="art">Art. 19.</b> Os casos omissos neste Regulamento serão analisados e resolvidos pela Comissão Organizadora.</p></div></details>
+          <p class="rules-sign">Pindobaçu–BA, novembro de 2026.<br><b>COMISSÃO ORGANIZADORA – AFRO RUN FUMAÇA 2026</b></p>
+          <a class="button button-sun rules-cta" href="#inscricao">LI E QUERO ME INSCREVER <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="signup section-pad reveal" id="inscricao">
+      <div class="section-heading"><span class="section-no">04 / FICHA DE LARGADA</span><span class="section-note">GARANTA SEU LUGAR!</span></div>
+      <div class="signup-intro"><h2>VEM <em>COM A GENTE!</em></h2><p>Preencha seus dados e prepare o sorriso. A festa é coletiva!</p></div>
+      <form id="registrationForm" class="form-bib">
+        <div class="form-top"><span>AFRO RUN · FUMAÇA 2026</span><span>Nº DE PEITO: <b>?</b></span></div>
+        <div class="form-grid">
+          <label class="field full">Nome completo<input name="nome" autocomplete="name" required minlength="3" placeholder="Seu nome e sobrenome"></label>
+          <label class="field">Data de nascimento<input name="nascimento" type="date" required></label>
+          <label class="field">CPF<input name="cpf" inputmode="numeric" autocomplete="off" required placeholder="000.000.000-00" maxlength="14"></label>
+          <label class="field">WhatsApp<input name="whatsapp" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000" maxlength="15"></label>
+          <label class="field">Cidade / comunidade<input name="comunidade" required placeholder="Onde você mora?"></label>
+          <label class="field">Tamanho da camisa<select name="camisa" required><option value="">Selecione</option><option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option></select></label>
+          <label class="field">Sexo <small>(opcional)</small><select name="sexo"><option value="">Prefiro não informar</option><option>Feminino</option><option>Masculino</option><option>Outro</option></select></label>
+          <div class="guardian full" id="guardianBox" hidden>
+            <p class="guardian-title">✳ Participante menor de 16 anos <small>(Regulamento, Art. 6º)</small></p>
+            <label class="field">Nome do pai, mãe ou responsável<input name="responsavel" autocomplete="off" placeholder="Nome completo do responsável"></label>
+            <label class="consent"><input type="checkbox" name="autorizacao_responsavel"><span>Sou o responsável legal, autorizo a participação e vou acompanhar o menor durante a caminhada.</span></label>
+          </div>
+        </div>
+        <label class="consent"><input type="checkbox" name="aptidao" required><span>Declaro que estou apto(a) para participar da caminhada.</span></label>
+        <label class="consent"><input type="checkbox" name="imagem" required><span>Autorizo o uso da minha imagem para registros e divulgação do evento.</span></label>
+        <label class="consent"><input type="checkbox" name="regulamento" required><span>Li e aceito o <a href="#regulamento">regulamento</a> da AFRO RUN — Fumaça 2026.</span></label>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="button button-dark submit" type="submit">CONFIRMAR INSCRIÇÃO <b>✳</b></button>
+        <p class="form-foot">Seus dados serão enviados para a organização do evento.</p>
       </form>
-      <section class="sucesso" id="ok" aria-live="polite">
-        <h3>Inscrição confirmada!</h3><div class="num" id="okNum">#000</div><p id="okCamisa"></p>
-        <p>A entrega das camisetas e a coleta de brinquedos acontecerão no dia da caminhada. Local e horário serão divulgados nas redes sociais da organização. Guarde o número da sua inscrição.</p>
-      </section>
-    </div>
-    <aside class="lado">
-      <div class="box verm"><h4>Todo mundo pode participar</h4><p>Caminhada comunitária, participativa e sem caráter competitivo, aberta a pessoas de diferentes idades, respeitadas as orientações do regulamento.</p></div>
-      <div class="box"><h4>Antes de sair de casa</h4><ul><li>Chegue às 15h15 para as orientações iniciais.</li><li>Saída e chegada na Praça dos Potes (Gameleira do Sr. Nequinho).</li><li>Use roupas e calçados confortáveis.</li><li>Haverá hidratação perto do km 1,5 e na chegada.</li><li>Menores de 16 anos precisam de autorização e acompanhamento do responsável.</li></ul></div>
-    </aside>
-  </div>
+      <div class="confirmation" id="confirmation" hidden>
+        <div class="confetti-title">É ISSO! <em>VOCÊ VEM!</em> 🎉</div>
+        <p>Seu número de peito está pronto. Salve e compartilhe essa alegria!</p>
+        <canvas id="bibCanvas" width="1000" height="1200" aria-label="Número de peito personalizado"></canvas>
+        <div class="confirm-actions"><button class="button button-color" id="downloadBib">BAIXAR IMAGEM ↓</button><button class="button button-dark" id="shareBib">COMPARTILHAR NO WHATSAPP ↗</button></div>
+      </div>
+    </section>
+  </main>
 
-  <details class="faq" id="faq">
-    <summary>Regulamento e perguntas frequentes</summary>
-    <ul>
-      <li><b>Inscrições:</b> a partir de quinta-feira, 12 de novembro de 2026, por esta página.</li>
-      <li><b>Data e local:</b> 28 de novembro de 2026, saída às 15h30 da Praça dos Potes (Gameleira do Sr. Nequinho), na Comunidade Quilombola de Fumaça. Chegue às 15h15 para as orientações.</li>
-      <li><b>Percurso:</b> aproximadamente 4 km, participativo, sem classificação, ranking ou premiação por desempenho.</li>
-      <li><b>Quem pode participar:</b> pessoas de todas as idades. Menores de 16 anos só com autorização dos pais ou responsáveis, que devem acompanhá-los durante toda a caminhada.</li>
-      <li><b>Camisetas:</b> as 200 camisetas oficiais vão para os 200 primeiros inscritos.</li>
-      <li><b>Entrega das camisetas e coleta de brinquedos:</b> no dia da caminhada, em local e horário divulgados nas redes sociais da organização.</li>
-      <li><b>Estrutura:</b> pontos de hidratação perto do km 1,5 e na chegada, com apoio de moradores e colaboradores no percurso.</li>
-      <li><b>Cuidados:</b> use roupas e calçados confortáveis, beba água, proteja-se do sol e interrompa a caminhada se sentir desconforto.</li>
-      <li><b>Uso de imagem:</b> ao se inscrever, você autoriza o uso gratuito de fotos e vídeos do evento para divulgação.</li>
-      <li><b>Respeito:</b> cuide do meio ambiente e da comunidade e não descarte lixo no percurso. A organização pode alterar programação ou percurso por segurança.</li>
-    </ul>
-    <a class="btn-reg" href="regulamento.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M6 2h9l5 5v15H6z"/><path fill="none" stroke="currentColor" stroke-width="2.2" d="M14 2v6h6M9 13h8M9 17h8"/></svg>Abrir o regulamento completo (PDF)</a>
-  </details>
-</section>
-
-<!-- ========== RODAPÉ (igual à arte) ========== -->
-<footer id="contato">
-  <img src="img/rodape.jpg" width="1024" height="314" alt="Realização: Festival Afro Fumaça, Associação Quilombola de Fumaça e Vereador Jau Menezes. Valorizar nossas raízes é correr por um futuro mais justo e igualitário!">
-  <div class="creditos">Comissão Organizadora · Afro Run Fumaça 2026 · Pindobaçu-BA</div>
-</footer>
-</div>
-
-<script>
-// CONFIGURAÇÃO: cole aqui a URL do Google Apps Script, terminada em /exec.
-const API = "COLE_AQUI_A_URL_DO_APPS_SCRIPT";
-const ABERTURA = new Date("2026-11-12T00:00:00-03:00");
-const LIMITE_CAMISAS = 200;
-const $ = id => document.getElementById(id);
-const teste = new URLSearchParams(location.search).has("teste");
-$("nascimento").max = new Date().toISOString().slice(0,10);
-
-if (new Date() < ABERTURA && !teste) { $("form").style.display = "none"; $("fechado").style.display = "block"; }
-
-$("menuBtn").addEventListener("click", () => {
-  const open = $("menuLinks").classList.toggle("open");
-  $("menuBtn").setAttribute("aria-expanded", String(open));
-  $("menuBtn").textContent = open ? "✕" : "☰";
-});
-document.querySelectorAll("#menuLinks a").forEach(a => a.addEventListener("click", () => {
-  $("menuLinks").classList.remove("open"); $("menuBtn").textContent = "☰"; $("menuBtn").setAttribute("aria-expanded","false");
-  if (a.getAttribute("href") === "#faq") $("faq").open = true;
-}));
-document.querySelectorAll('a[href="#faq"]').forEach(a => a.addEventListener("click", () => $("faq").open = true));
-
-function idade(n){const d=new Date(n+"T12:00:00"),h=new Date();let a=h.getFullYear()-d.getFullYear();if(h<new Date(h.getFullYear(),d.getMonth(),d.getDate()))a--;return a;}
-function soNum(v){return v.replace(/\D/g,"");}
-function mascTel(e){let v=soNum(e.target.value).slice(0,11);if(v.length>7)v=`(${v.slice(0,2)}) ${v.slice(2,3)} ${v.slice(3,7)}-${v.slice(7)}`;else if(v.length>2)v=`(${v.slice(0,2)}) ${v.slice(2)}`;e.target.value=v;}
-$("whatsapp").addEventListener("input",mascTel);$("telResp").addEventListener("input",mascTel);
-$("nascimento").addEventListener("change",()=>{const v=$("nascimento").value;$("menorBox").classList.toggle("on",!!v&&idade(v)<16);});
-function erro(m){$("erro").textContent=m;$("erro").style.display="block";}
-function mostraContagem(total){$("camisasStatus").textContent=Math.max(0,LIMITE_CAMISAS-total);}
-if(API.startsWith("http")){fetch(API).then(r=>r.json()).then(d=>mostraContagem(Number(d.total)||0)).catch(()=>{});}
-
-$("form").addEventListener("submit", async e => {
-  e.preventDefault(); $("erro").style.display="none";
-  const f={nome:$("nome").value.trim(),nascimento:$("nascimento").value,sexo:$("sexo").value,whatsapp:$("whatsapp").value,camisa:$("camisa").value,
-    cidade:$("cidade").value.trim(),responsavel:$("responsavel").value.trim(),telResp:$("telResp").value,aceiteRegulamento:$("aceite").checked,aceiteImagem:$("aceiteImagem").checked};
-  if(f.nome.split(/\s+/).length<2)return erro("Digite seu nome completo.");
-  if(!f.nascimento)return erro("Informe sua data de nascimento.");
-  const id=idade(f.nascimento); if(id<0||id>110)return erro("Confira a data de nascimento.");
-  if(!f.sexo)return erro("Selecione uma opção no campo sexo.");
-  if(soNum(f.whatsapp).length<10)return erro("Informe um WhatsApp válido com DDD.");
-  if(!f.camisa)return erro("Selecione o tamanho da camiseta.");
-  if(!f.cidade)return erro("Informe sua cidade ou comunidade.");
-  if(id<16){if(!f.responsavel)return erro("Informe o nome do responsável.");if(soNum(f.telResp).length<10)return erro("Informe o WhatsApp do responsável.");if(!$("autorizaResp").checked)return erro("O responsável precisa marcar a autorização e acompanhar o menor.");}
-  if(!f.aceiteRegulamento)return erro("É necessário concordar com o regulamento.");
-  if(!f.aceiteImagem)return erro("É necessário confirmar a autorização de uso de imagem prevista no regulamento.");
-  if(!API.startsWith("http"))return erro("O formulário ainda não está conectado à planilha de inscrições.");
-  $("enviar").disabled=true;$("enviarTxt").textContent="Enviando...";
-  try{
-    const r=await fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({...f,idade:id})});
-    const d=await r.json(); if(!d.ok)throw new Error(d.erro||"Erro ao salvar.");
-    $("form").style.display="none";$("ok").style.display="block";
-    $("okNum").textContent="#"+String(d.numero).padStart(3,"0");
-    $("okCamisa").innerHTML=d.duplicada?"Você já estava inscrito(a) — esse é o seu número.":d.camisa?"<strong>Você garantiu sua camiseta oficial!</strong>":"As 200 camisetas já foram destinadas, mas sua participação está confirmada.";
-    mostraContagem(Number(d.total)||0);
-    window.scrollTo({top:$("ok").getBoundingClientRect().top+scrollY-20,behavior:"smooth"});
-  }catch(err){erro("Não foi possível enviar agora. Verifique a conexão e tente novamente.");$("enviar").disabled=false;$("enviarTxt").textContent="Confirmar inscrição";}
-});
-</script>
+  <footer class="footer">
+    <div class="footer-main"><img src="logo.png" alt="Logo AFRO RUN"><div><h2>BORA <em>NESSA!</em></h2><p>Cultura, Esporte e Igualdade em Movimento</p></div></div>
+    <div class="footer-meta"><p><b>APOIADORES</b><br>[PREENCHER]</p><p><b>CONTATO</b><br>[PREENCHER]</p><p><b>REDES</b><br>[PREENCHER]</p></div>
+    <div class="footer-bottom"><span>AFRO RUN — FUMAÇA 2026</span><span>4 KM · 28.11 · 15H30</span></div>
+  </footer>
+  <a class="mobile-fixed" href="#inscricao">QUERO CORRER NESSA! ↗</a>
+  <script src="script.js"></script>
 </body>
 </html>

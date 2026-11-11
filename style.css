@@ -1832,3 +1832,6 @@ html, body { overflow-x: clip; }
 .sh[aria-busy="true"] { opacity: .7; pointer-events: none; }
 .share-hint { min-height: 1em; margin: 12px 0 0; font-size: 13px; line-height: 1.4; color: var(--cream); opacity: .9; }
 @media (min-width: 700px) { .share-btns { grid-template-columns: repeat(3, 1fr); max-width: 780px; } }
+.hx-cta b { font-size: clamp(21px, 6.5vw, 40px); white-space: nowrap; }
+.hx-cta { gap: 12px; padding-left: 14px; padding-right: 14px; }
+@media (min-width: 900px) { .hx-cta { padding-left: 34px; padding-right: 34px; } }

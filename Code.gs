@@ -83,127 +83,154 @@ function json_(obj) {
 }
 
 /* =====================================================================
- * PAINEL: aba com totais e gráficos (camisas por tamanho, sexo,
- * comunidades e inscrições por dia). Atualiza sozinho a cada inscrição.
+ * PAINEL: totais e gráficos (pizza de camisas, sexo e faixa etária,
+ * barras por comunidade e inscrições por dia). Atualiza sozinho.
  * Para recriar do zero: no editor, escolha "montarPainel" e clique em Executar.
  * ===================================================================== */
 function montarPainel() {
-  const ssLoc = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
-  const SEP = /^en/.test(ssLoc.getSpreadsheetLocale()) ? "," : ";";
-  // troca as vírgulas das fórmulas pelo separador do idioma da planilha (fora das aspas)
-  const F_ = function (f) {
-    let r = "", q = false;
-    for (const c of f) { if (c === '"') q = !q; r += (!q && c === ",") ? SEP : c; }
-    return r;
-  };
   const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+  const SEP = /^en/.test(ss.getSpreadsheetLocale()) ? "," : ";";
+  const F_ = function (f) { let r = "", q = false; for (const c of f) { if (c === '"') q = !q; r += (!q && c === ",") ? SEP : c; } return r; };
   const ins = aba_();
-  const COFFEE = "#2A140B", SUN = "#FFC400", ORANGE = "#FF5A1F", TURQ = "#00B3A7", PINK = "#F0368A", GREEN = "#2BB24C", CREAM = "#FFF4E2";
+  const COFFEE = "#2A140B", SUN = "#FFC400", ORANGE = "#FF5A1F", TURQ = "#00B3A7", PINK = "#F0368A", GREEN = "#2BB24C", CREAM = "#FFF4E2", PURPLE = "#7B3FC4";
+  const I = "'" + ABA + "'!";
 
-  // ---- aba Inscrições mais organizada
+  // ---- aba Inscrições organizada
   ins.setFrozenRows(1);
   ins.setRowHeight(1, 34);
   ins.getRange(1, 1, 1, CABECALHO.length).setFontWeight("bold").setBackground(COFFEE).setFontColor(SUN).setVerticalAlignment("middle").setWrap(true);
-  const larg = [45, 135, 230, 95, 115, 120, 150, 80, 85, 95, 80, 200, 110, 70, 80, 95];
-  larg.forEach(function (w, i) { ins.setColumnWidth(i + 1, w); });
+  [45, 135, 230, 95, 115, 120, 150, 80, 85, 95, 80, 200, 110, 70, 80, 95].forEach(function (w, i) { ins.setColumnWidth(i + 1, w); });
   ins.getRange("A:A").setHorizontalAlignment("center");
   ins.getRange("H:K").setHorizontalAlignment("center");
   ins.getRange("B2:B").setNumberFormat("dd/mm/yyyy HH:mm");
   ins.getRange("D2:D").setNumberFormat("dd/mm/yyyy");
   if (ins.getBandings().length === 0) {
     ins.getRange(1, 1, ins.getMaxRows(), CABECALHO.length).applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, true, false)
-      .setHeaderRowColor(COFFEE).setFirstRowColor("#FFFFFF").setSecondRowColor("#FFF4E2");
+      .setHeaderRowColor(COFFEE).setFirstRowColor("#FFFFFF").setSecondRowColor(CREAM);
   }
-  const regras = [
+  ins.setConditionalFormatRules([
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#D9F2E1").setFontColor("#156B33").setRanges([ins.getRange("I2:I")]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("NÃO").setBackground("#FDE2E2").setFontColor("#9B1C1C").setRanges([ins.getRange("I2:I")]).build(),
     SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#FFF1C2").setFontColor("#7A5200").setRanges([ins.getRange("K2:K")]).build()
-  ];
-  ins.setConditionalFormatRules(regras);
-
-  // apaga a "Página1" vazia, se existir
+  ]);
   const p1 = ss.getSheetByName("Página1");
   if (p1 && p1.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(p1);
 
-  // ---- aba Painel (recriada)
+  // ---- Painel
   let pn = ss.getSheetByName("Painel");
   if (pn) ss.deleteSheet(pn);
   pn = ss.insertSheet("Painel", 0);
   pn.setHiddenGridlines(true);
-  pn.getRange("A:H").setFontFamily("Arial").setVerticalAlignment("middle");
-  [150, 110, 165, 30, 150, 110, 30, 30].forEach(function (w, i) { pn.setColumnWidth(i + 1, w); });
-  const I = "'" + ABA + "'!";
+  pn.setTabColor(ORANGE);
+  ins.setTabColor(TURQ);
+  const W = [16, 130, 110, 110, 16, 130, 110, 110, 16];   // A..I (A, E e I são margens)
+  W.forEach(function (w, i) { pn.setColumnWidth(i + 1, w); });
+  pn.getRange("A1:I200").setFontFamily("Arial").setVerticalAlignment("middle").setBackground("#FFFBF3");
 
-  pn.getRange("A1:F1").merge().setValue("AFRO RUN FUMAÇA 2026 · PAINEL DE INSCRIÇÕES")
-    .setFontSize(16).setFontWeight("bold").setFontColor(SUN).setBackground(COFFEE).setHorizontalAlignment("center");
-  pn.setRowHeight(1, 46);
-  pn.getRange("A2:F2").merge().setFormula(F_('="Atualiza sozinho a cada inscrição · " & TEXT(NOW(),"dd/mm/yyyy HH:mm")'))
-    .setFontColor("#7a6a5a").setFontSize(9).setHorizontalAlignment("center");
+  const box = function (a1, txt, bg, fg, size) {
+    return pn.getRange(a1).merge().setValue(txt).setBackground(bg).setFontColor(fg || "#FFFFFF").setFontWeight("bold").setFontSize(size || 10).setHorizontalAlignment("center");
+  };
+  const num = function (a1, f, color) {
+    return pn.getRange(a1).merge().setFormula(F_(f)).setBackground("#FFFFFF").setFontColor(color || COFFEE).setFontWeight("bold").setFontSize(28).setHorizontalAlignment("center")
+      .setBorder(true, true, true, true, false, false, "#EADBC2", SpreadsheetApp.BorderStyle.SOLID);
+  };
 
-  // cartões de números
-  const cards = [
-    ["A4:B4", "A5:B5", "TOTAL DE INSCRITOS", "=COUNTA(" + I + "C2:C)", ORANGE],
-    ["C4:C4", "C5:C5", "CAMISAS GARANTIDAS", "=COUNTIF(" + I + "I2:I,\"SIM\")", TURQ],
-    ["E4:F4", "E5:F5", "CAMISAS RESTANTES (de " + LIMITE_CAMISAS + ")", "=MAX(0," + LIMITE_CAMISAS + "-COUNTIF(" + I + "I2:I,\"SIM\"))", PINK],
-    ["A6:B6", "A7:B7", "MENORES DE 16 ANOS", "=COUNTIF(" + I + "K2:K,\"SIM\")", GREEN],
-    ["C6:C6", "C7:C7", "INSCRITOS HOJE", "=COUNTIFS(" + I + "B2:B,\">=\"&TODAY())", SUN],
-    ["E6:F6", "E7:F7", "SEM CAMISA (após 200)", "=COUNTIF(" + I + "I2:I,\"NÃO\")", "#8A6A55"]
+  // título
+  pn.setRowHeight(1, 12);
+  box("B2:H2", "AFRO RUN FUMAÇA 2026  ·  PAINEL DE INSCRIÇÕES", COFFEE, SUN, 17);
+  pn.setRowHeight(2, 50);
+  pn.getRange("B3:H3").merge().setFormula(F_('="Cultura, Esporte e Igualdade em Movimento  ·  atualizado em " & TEXT(NOW(),"dd/mm/yyyy HH:mm")'))
+    .setFontColor("#8A6A55").setFontSize(9).setHorizontalAlignment("center").setFontStyle("italic");
+  pn.getRange("B4:H4").setBackground(SUN); pn.setRowHeight(4, 5);
+
+  // cartões
+  pn.setRowHeight(5, 10);
+  box("B6:C6", "TOTAL DE INSCRITOS", ORANGE);
+  box("D6:D6", "INSCRITOS HOJE", SUN, COFFEE);
+  box("F6:G6", "CAMISAS GARANTIDAS", TURQ);
+  box("H6:H6", "RESTAM (de " + LIMITE_CAMISAS + ")", PINK);
+  num("B7:C7", "=COUNTA(" + I + "C2:C)", ORANGE);
+  num("D7:D7", "=COUNTIFS(" + I + "B2:B,\">=\"&TODAY())");
+  num("F7:G7", "=COUNTIF(" + I + "I2:I,\"SIM\")", TURQ);
+  num("H7:H7", "=MAX(0," + LIMITE_CAMISAS + "-COUNTIF(" + I + "I2:I,\"SIM\"))", PINK);
+  pn.setRowHeight(7, 58);
+  pn.setRowHeight(8, 8);
+  box("B9:C9", "MENORES DE 16 ANOS", GREEN);
+  box("D9:D9", "SEM CAMISA", "#8A6A55");
+  box("F9:H9", "CAMISAS ENTREGUES  ·  BARRA DE PROGRESSO", PURPLE);
+  num("B10:C10", "=COUNTIF(" + I + "K2:K,\"SIM\")", GREEN);
+  num("D10:D10", "=COUNTIF(" + I + "I2:I,\"NÃO\")", "#8A6A55");
+  pn.getRange("F10:H10").merge().setFormula(F_("=SPARKLINE(COUNTIF(" + I + "I2:I,\"SIM\"),{\"charttype\",\"bar\";\"max\"," + LIMITE_CAMISAS + ";\"color1\",\"" + TURQ + "\"})"))
+    .setBackground("#FFFFFF").setBorder(true, true, true, true, false, false, "#EADBC2", SpreadsheetApp.BorderStyle.SOLID);
+  pn.setRowHeight(10, 58);
+
+  // aviso
+  pn.setRowHeight(11, 10);
+  pn.getRange("B12:H12").merge().setFormula(F_('=IF(COUNTA(' + I + 'C2:C)=0,"📊  Os gráficos aparecem sozinhos a partir da primeira inscrição.","")'))
+    .setFontColor(PINK).setFontWeight("bold").setHorizontalAlignment("center");
+
+  // ---- tabelas que alimentam os gráficos (abaixo dos gráficos)
+  const T = 80;  // linha inicial das tabelas
+  box("B" + T + ":D" + T, "CAMISAS POR TAMANHO", SUN, COFFEE);
+  pn.getRange("B" + (T + 1) + ":D" + (T + 1)).setValues([["Tamanho", "Pedidos", "Garantidas"]]).setFontWeight("bold").setBackground("#F3E3C7").setHorizontalAlignment("center");
+  ["PP", "P", "M", "G", "GG"].forEach(function (t, i) {
+    const r = T + 2 + i;
+    pn.getRange(r, 2).setValue(t).setHorizontalAlignment("center").setFontWeight("bold");
+    pn.getRange(r, 3).setFormula(F_("=COUNTIF(" + I + "H2:H,B" + r + ")")).setHorizontalAlignment("center");
+    pn.getRange(r, 4).setFormula(F_("=COUNTIFS(" + I + "H2:H,B" + r + "," + I + "I2:I,\"SIM\")")).setHorizontalAlignment("center");
+  });
+  pn.getRange("B" + (T + 7)).setValue("TOTAL").setFontWeight("bold").setHorizontalAlignment("center");
+  pn.getRange("C" + (T + 7)).setFormula(F_("=SUM(C" + (T + 2) + ":C" + (T + 6) + ")")).setFontWeight("bold").setHorizontalAlignment("center");
+  pn.getRange("D" + (T + 7)).setFormula(F_("=SUM(D" + (T + 2) + ":D" + (T + 6) + ")")).setFontWeight("bold").setHorizontalAlignment("center");
+
+  box("F" + T + ":H" + T, "SEXO", PINK);
+  pn.getRange("F" + (T + 1) + ":G" + (T + 1)).setValues([["Sexo", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7");
+  pn.getRange("F" + (T + 2) + ":F" + (T + 5)).setValues([["Feminino"], ["Masculino"], ["Outro"], ["Não informado"]]);
+  for (let k = 0; k < 3; k++) pn.getRange("G" + (T + 2 + k)).setFormula(F_("=COUNTIF(" + I + "J2:J,F" + (T + 2 + k) + ")"));
+  pn.getRange("G" + (T + 5)).setFormula(F_("=COUNTA(" + I + "C2:C)-SUM(G" + (T + 2) + ":G" + (T + 4) + ")"));
+
+  const A = T + 10;
+  box("B" + A + ":D" + A, "FAIXA ETÁRIA (no dia 28/11)", GREEN);
+  pn.getRange("B" + (A + 1) + ":C" + (A + 1)).setValues([["Faixa", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7");
+  const faixas = [
+    ["Até 15 anos", "=COUNTIFS(" + I + "D2:D,\">\"&DATE(2010,11,28))"],
+    ["16 a 29 anos", "=COUNTIFS(" + I + "D2:D,\"<=\"&DATE(2010,11,28)," + I + "D2:D,\">\"&DATE(1996,11,28))"],
+    ["30 a 44 anos", "=COUNTIFS(" + I + "D2:D,\"<=\"&DATE(1996,11,28)," + I + "D2:D,\">\"&DATE(1981,11,28))"],
+    ["45 a 59 anos", "=COUNTIFS(" + I + "D2:D,\"<=\"&DATE(1981,11,28)," + I + "D2:D,\">\"&DATE(1966,11,28))"],
+    ["60 anos ou mais", "=COUNTIFS(" + I + "D2:D,\"<=\"&DATE(1966,11,28))"]
   ];
-  cards.forEach(function (c) {
-    pn.getRange(c[0]).merge().setValue(c[2]).setBackground(c[4]).setFontColor(c[4] === SUN ? COFFEE : "#FFFFFF").setFontWeight("bold").setFontSize(9).setHorizontalAlignment("center");
-    pn.getRange(c[1]).merge().setFormula(F_(c[3])).setBackground(CREAM).setFontColor(COFFEE).setFontWeight("bold").setFontSize(26).setHorizontalAlignment("center");
-  });
-  [5, 7].forEach(function (r) { pn.setRowHeight(r, 48); });
+  faixas.forEach(function (f, i) { pn.getRange(A + 2 + i, 2).setValue(f[0]); pn.getRange(A + 2 + i, 3).setFormula(F_(f[1])).setHorizontalAlignment("center"); });
 
-  // tabela: camisas por tamanho
-  pn.getRange("A9:C9").merge().setValue("CAMISAS POR TAMANHO").setFontWeight("bold").setFontColor(COFFEE).setBackground(SUN);
-  pn.getRange("A10:C10").setValues([["Tamanho", "Pedidos (todos)", "Com camisa garantida"]]).setFontWeight("bold").setBackground("#F3E3C7");
-  const tam = ["PP", "P", "M", "G", "GG"];
-  tam.forEach(function (t, i) {
-    const r = 11 + i;
-    pn.getRange(r, 1).setValue(t).setHorizontalAlignment("center").setFontWeight("bold");
-    pn.getRange(r, 2).setFormula(F_("=COUNTIF(" + I + "H2:H,A" + r + ")")).setHorizontalAlignment("center");
-    pn.getRange(r, 3).setFormula(F_("=COUNTIFS(" + I + "H2:H,A" + r + "," + I + "I2:I,\"SIM\")")).setHorizontalAlignment("center");
-  });
-  pn.getRange("A16").setValue("TOTAL").setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("B16").setFormula(F_("=SUM(B11:B15)")).setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("C16").setFormula(F_("=SUM(C11:C15)")).setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("A10:C16").setBorder(true, true, true, true, true, true, "#D8C3A0", SpreadsheetApp.BorderStyle.SOLID);
+  box("F" + A + ":H" + A, "INSCRITOS POR CIDADE / COMUNIDADE", TURQ);
+  pn.getRange("F" + (A + 1)).setFormula(F_("=IFERROR(QUERY(" + I + "G2:G,\"select G, count(G) where G <> '' group by G order by count(G) desc label G 'Comunidade', count(G) 'Inscritos'\",0),\"\")"));
 
-  // tabela: sexo
-  pn.getRange("E9:F9").merge().setValue("SEXO").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(PINK);
-  pn.getRange("E10:F10").setValues([["Sexo", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7");
-  pn.getRange("E11:E14").setValues([["Feminino"], ["Masculino"], ["Outro"], ["Não informado"]]);
-  pn.getRange("F11").setFormula(F_("=COUNTIF(" + I + "J2:J,E11)"));
-  pn.getRange("F12").setFormula(F_("=COUNTIF(" + I + "J2:J,E12)"));
-  pn.getRange("F13").setFormula(F_("=COUNTIF(" + I + "J2:J,E13)"));
-  pn.getRange("F14").setFormula(F_("=COUNTA(" + I + "C2:C)-SUM(F11:F13)"));
-  pn.getRange("F11:F14").setHorizontalAlignment("center");
-  pn.getRange("E10:F14").setBorder(true, true, true, true, true, true, "#D8C3A0", SpreadsheetApp.BorderStyle.SOLID);
+  const D = A + 40;
+  box("B" + D + ":D" + D, "INSCRIÇÕES POR DIA", ORANGE);
+  pn.getRange("B" + (D + 1)).setFormula(F_("=IFERROR(QUERY({ARRAYFORMULA(IF(" + I + "B2:B=\"\",,INT(" + I + "B2:B)))},\"select Col1, count(Col1) where Col1 is not null group by Col1 order by Col1 label Col1 'Dia', count(Col1) 'Inscrições'\",0),\"\")"));
+  pn.getRange("B" + (D + 2) + ":B" + (D + 60)).setNumberFormat("dd/mm");
 
-  // tabela: comunidades (automática)
-  pn.getRange("A19:C19").merge().setValue("INSCRITOS POR CIDADE / COMUNIDADE").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(TURQ);
-  pn.getRange("A20").setFormula(F_("=IFERROR(QUERY(" + I + "G2:G,\"select G, count(G) where G <> '' group by G order by count(G) desc label G 'Cidade/Comunidade', count(G) 'Inscritos'\",0),\"Sem inscrições ainda\")"));
-
-  // tabela: inscrições por dia (automática)
-  pn.getRange("E19:F19").merge().setValue("INSCRIÇÕES POR DIA").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(ORANGE);
-  pn.getRange("E20").setFormula(F_("=IFERROR(QUERY({ARRAYFORMULA(IF(" + I + "B2:B=\"\",,INT(" + I + "B2:B)))},\"select Col1, count(Col1) where Col1 is not null group by Col1 order by Col1 label Col1 'Dia', count(Col1) 'Inscrições'\",0),\"Sem inscrições ainda\")"));
-  pn.getRange("E21:E80").setNumberFormat("dd/mm/yyyy");
-
-  // ---- gráficos (à direita)
-  const graf = function (tipo, faixa, linha, titulo, cores, extra) {
+  // ---- gráficos (logo abaixo dos números, em 2 colunas)
+  const graf = function (tipo, faixa, linha, col, titulo, cores, extra, w, h) {
     let b = pn.newChart().setChartType(tipo).addRange(pn.getRange(faixa)).setNumHeaders(1)
-      .setPosition(linha, 8, 0, 0)
-      .setOption("title", titulo).setOption("titleTextStyle", { color: COFFEE, fontSize: 15, bold: true })
-      .setOption("width", 560).setOption("height", 300).setOption("colors", cores)
-      .setOption("backgroundColor", "#FFFDF8").setOption("legend", { position: "top" });
+      .setPosition(linha, col, 6, 0)
+      .setOption("title", titulo).setOption("titleTextStyle", { color: COFFEE, fontSize: 14, bold: true })
+      .setOption("width", w || 380).setOption("height", h || 300).setOption("colors", cores)
+      .setOption("backgroundColor", { fill: "#FFFFFF", stroke: "#EADBC2", strokeWidth: 1 })
+      .setOption("chartArea", { left: "8%", top: "16%", width: "84%", height: "70%" })
+      .setOption("fontName", "Arial");
     if (extra) Object.keys(extra).forEach(function (k) { b = b.setOption(k, extra[k]); });
     pn.insertChart(b.build());
   };
-  graf(Charts.ChartType.COLUMN, "A10:C15", 1, "Camisas por tamanho", [ORANGE, TURQ], { vAxis: { minValue: 0, format: "0" } });
-  graf(Charts.ChartType.PIE, "E10:F14", 17, "Inscritos por sexo", [PINK, TURQ, SUN, "#B9A68F"], { pieHole: 0.45 });
-  graf(Charts.ChartType.BAR, "A20:B45", 33, "Inscritos por cidade / comunidade", [TURQ], { hAxis: { minValue: 0, format: "0" }, legend: { position: "none" } });
-  graf(Charts.ChartType.COLUMN, "E20:F80", 49, "Inscrições por dia", [ORANGE], { vAxis: { minValue: 0, format: "0" }, legend: { position: "none" } });
+  const pizza = { pieHole: 0.5, pieSliceText: "value", pieSliceTextStyle: { color: "#FFFFFF", fontSize: 13, bold: true }, legend: { position: "right", textStyle: { color: COFFEE, fontSize: 11 } }, sliceVisibilityThreshold: 0 };
+  graf(Charts.ChartType.PIE, "B" + (T + 1) + ":C" + (T + 6), 14, 2, "👕  Camisas por tamanho", [ORANGE, SUN, TURQ, PINK, GREEN], pizza);
+  graf(Charts.ChartType.PIE, "F" + (T + 1) + ":G" + (T + 5), 14, 6, "Inscritos por sexo", [PINK, TURQ, SUN, "#C9B8A3"], pizza);
+  graf(Charts.ChartType.PIE, "B" + (A + 1) + ":C" + (A + 6), 30, 2, "Faixa etária", [SUN, ORANGE, PINK, TURQ, GREEN], pizza);
+  graf(Charts.ChartType.COLUMN, "B" + (T + 1) + ":D" + (T + 6), 30, 6, "Camisas: pedidas x garantidas", [ORANGE, TURQ],
+    { legend: { position: "top" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, bar: { groupWidth: "65%" } });
+  graf(Charts.ChartType.BAR, "F" + (A + 1) + ":G" + (A + 30), 46, 2, "📍  Inscritos por cidade / comunidade", [TURQ],
+    { legend: { position: "none" }, hAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, chartArea: { left: "30%", top: "14%", width: "62%", height: "76%" } }, 772, 300);
+  graf(Charts.ChartType.AREA, "B" + (D + 1) + ":C" + (D + 60), 62, 2, "📈  Inscrições por dia", [ORANGE],
+    { legend: { position: "none" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, areaOpacity: 0.25, lineWidth: 3, pointSize: 6 }, 772, 280);
 
   ss.setActiveSheet(pn);
 }

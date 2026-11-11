@@ -1593,3 +1593,19 @@ select:focus-visible {
   .hero-head h1 { margin: 26px 0 56px; }
   .hero-copy > .tagline { align-self: start; }
 }
+
+/* Nome AFRO RUN pequeno no canto do quadro */
+.bib-top { align-items: center; }
+.bib-name {
+  font-family: "Anton", sans-serif; font-size: 18px; letter-spacing: .02em; line-height: 1;
+  color: var(--coffee); padding-left: 16px;
+}
+.bib-name b { color: var(--orange); font-weight: 400; }
+.bib-top > span:last-child { padding-right: 16px; }
+.bib-logo { margin-top: 18px; }
+@media (max-width: 699px) {
+  .bib-top { justify-content: space-between; }
+  .bib-top span.bib-name { display: inline; font-size: 10px; padding-left: 9px; }
+  .bib-top > span:last-child { font-size: 5px; padding-right: 8px; }
+  .bib-logo { margin-top: 8px; }
+}

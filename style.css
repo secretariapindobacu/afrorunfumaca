@@ -1816,3 +1816,19 @@ html, body { overflow-x: clip; }
   .lg-festival, .lg-assoc { width: 120px; }
   .lg-jau { width: 280px; }
 }
+
+/* Botões de compartilhar */
+.footer-share { margin-top: 26px; padding-top: 22px; border-top: 1px dashed #ffffff2e; text-align: center; }
+.footer-share-title { margin: 0 0 14px; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 22px; letter-spacing: .02em; color: var(--sun); }
+.share-btns { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 520px; margin: 0 auto; }
+.sh { display: flex; align-items: center; justify-content: center; gap: 10px; border: 0; cursor: pointer; text-decoration: none; color: #fff;
+  font-family: "Outfit", sans-serif; font-weight: 800; font-size: 16px; padding: 14px 18px; border-radius: 4px 18px 4px 18px; transition: transform .2s, box-shadow .2s; }
+.sh svg { width: 24px; height: 24px; fill: currentColor; flex-shrink: 0; }
+.sh:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 6px 0 #0004; }
+.sh-wa { background: #1FAF54; }
+.sh-ig { background: linear-gradient(45deg, #F9A825, #F0368A 45%, #8E3BD8); }
+.sh-reels { background: linear-gradient(45deg, #FF5A1F, #F0368A 50%, #6C3BD8); }
+.sh b { font-weight: 800; color: var(--sun); }
+.sh[aria-busy="true"] { opacity: .7; pointer-events: none; }
+.share-hint { min-height: 1em; margin: 12px 0 0; font-size: 13px; line-height: 1.4; color: var(--cream); opacity: .9; }
+@media (min-width: 700px) { .share-btns { grid-template-columns: repeat(3, 1fr); max-width: 780px; } }

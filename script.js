@@ -184,3 +184,26 @@ form.elements.nascimento.addEventListener("change",()=>{
  form.hidden=!aberto;
  document.getElementById("formClosed").hidden=aberto;
 })();
+
+// ---------- COMPARTILHAR NO INSTAGRAM (Story / Reels) ----------
+const SITE_URL="https://secretariapindobacu.github.io/afrorunfumaca/";
+const shareHint=document.getElementById("shareHint");
+document.querySelectorAll(".sh-ig").forEach(btn=>btn.addEventListener("click",async()=>{
+ const file=btn.dataset.file,type=btn.dataset.type,label=btn.dataset.label;
+ shareHint.textContent="Preparando a arte…";btn.setAttribute("aria-busy","true");
+ try{
+  const blob=await (await fetch(file)).blob();
+  const f=new File([blob],file,{type});
+  if(navigator.canShare&&navigator.canShare({files:[f]})){
+   await navigator.share({files:[f],title:"AFRO RUN Fumaça 2026",text:"Bora pra AFRO RUN Fumaça 2026! Inscrições: "+SITE_URL});
+   shareHint.textContent="No menu, escolha Instagram e depois "+label+". Cole o link no adesivo de link: "+SITE_URL;
+  }else{
+   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=file;document.body.appendChild(a);a.click();a.remove();
+   try{await navigator.clipboard.writeText(SITE_URL);}catch(e){}
+   shareHint.textContent="Arte baixada! Abra o Instagram, crie um "+label+" com ela e use o adesivo de link (o link já foi copiado).";
+  }
+ }catch(err){
+  if(err&&err.name==="AbortError"){shareHint.textContent="";}
+  else{shareHint.textContent="Não deu para abrir o compartilhamento. Baixe a arte e poste no Instagram: "+location.origin+location.pathname+file;}
+ }finally{btn.removeAttribute("aria-busy");}
+}));

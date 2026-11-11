@@ -88,6 +88,14 @@ function json_(obj) {
  * Para recriar do zero: no editor, escolha "montarPainel" e clique em Executar.
  * ===================================================================== */
 function montarPainel() {
+  const ssLoc = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+  const SEP = /^en/.test(ssLoc.getSpreadsheetLocale()) ? "," : ";";
+  // troca as vírgulas das fórmulas pelo separador do idioma da planilha (fora das aspas)
+  const F_ = function (f) {
+    let r = "", q = false;
+    for (const c of f) { if (c === '"') q = !q; r += (!q && c === ",") ? SEP : c; }
+    return r;
+  };
   const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
   const ins = aba_();
   const COFFEE = "#2A140B", SUN = "#FFC400", ORANGE = "#FF5A1F", TURQ = "#00B3A7", PINK = "#F0368A", GREEN = "#2BB24C", CREAM = "#FFF4E2";
@@ -129,7 +137,7 @@ function montarPainel() {
   pn.getRange("A1:F1").merge().setValue("AFRO RUN FUMAÇA 2026 · PAINEL DE INSCRIÇÕES")
     .setFontSize(16).setFontWeight("bold").setFontColor(SUN).setBackground(COFFEE).setHorizontalAlignment("center");
   pn.setRowHeight(1, 46);
-  pn.getRange("A2:F2").merge().setFormula('="Atualiza sozinho a cada inscrição · " & TEXT(NOW(),"dd/mm/yyyy HH:mm")')
+  pn.getRange("A2:F2").merge().setFormula(F_('="Atualiza sozinho a cada inscrição · " & TEXT(NOW(),"dd/mm/yyyy HH:mm")'))
     .setFontColor("#7a6a5a").setFontSize(9).setHorizontalAlignment("center");
 
   // cartões de números
@@ -143,7 +151,7 @@ function montarPainel() {
   ];
   cards.forEach(function (c) {
     pn.getRange(c[0]).merge().setValue(c[2]).setBackground(c[4]).setFontColor(c[4] === SUN ? COFFEE : "#FFFFFF").setFontWeight("bold").setFontSize(9).setHorizontalAlignment("center");
-    pn.getRange(c[1]).merge().setFormula(c[3]).setBackground(CREAM).setFontColor(COFFEE).setFontWeight("bold").setFontSize(26).setHorizontalAlignment("center");
+    pn.getRange(c[1]).merge().setFormula(F_(c[3])).setBackground(CREAM).setFontColor(COFFEE).setFontWeight("bold").setFontSize(26).setHorizontalAlignment("center");
   });
   [5, 7].forEach(function (r) { pn.setRowHeight(r, 48); });
 
@@ -154,32 +162,32 @@ function montarPainel() {
   tam.forEach(function (t, i) {
     const r = 11 + i;
     pn.getRange(r, 1).setValue(t).setHorizontalAlignment("center").setFontWeight("bold");
-    pn.getRange(r, 2).setFormula("=COUNTIF(" + I + "H2:H,A" + r + ")").setHorizontalAlignment("center");
-    pn.getRange(r, 3).setFormula("=COUNTIFS(" + I + "H2:H,A" + r + "," + I + "I2:I,\"SIM\")").setHorizontalAlignment("center");
+    pn.getRange(r, 2).setFormula(F_("=COUNTIF(" + I + "H2:H,A" + r + ")")).setHorizontalAlignment("center");
+    pn.getRange(r, 3).setFormula(F_("=COUNTIFS(" + I + "H2:H,A" + r + "," + I + "I2:I,\"SIM\")")).setHorizontalAlignment("center");
   });
   pn.getRange("A16").setValue("TOTAL").setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("B16").setFormula("=SUM(B11:B15)").setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("C16").setFormula("=SUM(C11:C15)").setFontWeight("bold").setHorizontalAlignment("center");
+  pn.getRange("B16").setFormula(F_("=SUM(B11:B15)")).setFontWeight("bold").setHorizontalAlignment("center");
+  pn.getRange("C16").setFormula(F_("=SUM(C11:C15)")).setFontWeight("bold").setHorizontalAlignment("center");
   pn.getRange("A10:C16").setBorder(true, true, true, true, true, true, "#D8C3A0", SpreadsheetApp.BorderStyle.SOLID);
 
   // tabela: sexo
   pn.getRange("E9:F9").merge().setValue("SEXO").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(PINK);
   pn.getRange("E10:F10").setValues([["Sexo", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7");
   pn.getRange("E11:E14").setValues([["Feminino"], ["Masculino"], ["Outro"], ["Não informado"]]);
-  pn.getRange("F11").setFormula("=COUNTIF(" + I + "J2:J,E11)");
-  pn.getRange("F12").setFormula("=COUNTIF(" + I + "J2:J,E12)");
-  pn.getRange("F13").setFormula("=COUNTIF(" + I + "J2:J,E13)");
-  pn.getRange("F14").setFormula("=COUNTA(" + I + "C2:C)-SUM(F11:F13)");
+  pn.getRange("F11").setFormula(F_("=COUNTIF(" + I + "J2:J,E11)"));
+  pn.getRange("F12").setFormula(F_("=COUNTIF(" + I + "J2:J,E12)"));
+  pn.getRange("F13").setFormula(F_("=COUNTIF(" + I + "J2:J,E13)"));
+  pn.getRange("F14").setFormula(F_("=COUNTA(" + I + "C2:C)-SUM(F11:F13)"));
   pn.getRange("F11:F14").setHorizontalAlignment("center");
   pn.getRange("E10:F14").setBorder(true, true, true, true, true, true, "#D8C3A0", SpreadsheetApp.BorderStyle.SOLID);
 
   // tabela: comunidades (automática)
   pn.getRange("A19:C19").merge().setValue("INSCRITOS POR CIDADE / COMUNIDADE").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(TURQ);
-  pn.getRange("A20").setFormula("=IFERROR(QUERY(" + I + "G2:G,\"select G, count(G) where G <> '' group by G order by count(G) desc label G 'Cidade/Comunidade', count(G) 'Inscritos'\",0),\"Sem inscrições ainda\")");
+  pn.getRange("A20").setFormula(F_("=IFERROR(QUERY(" + I + "G2:G,\"select G, count(G) where G <> '' group by G order by count(G) desc label G 'Cidade/Comunidade', count(G) 'Inscritos'\",0),\"Sem inscrições ainda\")"));
 
   // tabela: inscrições por dia (automática)
   pn.getRange("E19:F19").merge().setValue("INSCRIÇÕES POR DIA").setFontWeight("bold").setFontColor("#FFFFFF").setBackground(ORANGE);
-  pn.getRange("E20").setFormula("=IFERROR(QUERY({ARRAYFORMULA(IF(" + I + "B2:B=\"\",,INT(" + I + "B2:B)))},\"select Col1, count(Col1) where Col1 is not null group by Col1 order by Col1 label Col1 'Dia', count(Col1) 'Inscrições'\",0),\"Sem inscrições ainda\")");
+  pn.getRange("E20").setFormula(F_("=IFERROR(QUERY({ARRAYFORMULA(IF(" + I + "B2:B=\"\",,INT(" + I + "B2:B)))},\"select Col1, count(Col1) where Col1 is not null group by Col1 order by Col1 label Col1 'Dia', count(Col1) 'Inscrições'\",0),\"Sem inscrições ainda\")"));
   pn.getRange("E21:E80").setNumberFormat("dd/mm/yyyy");
 
   // ---- gráficos (à direita)

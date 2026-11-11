@@ -160,7 +160,8 @@ function montarPainel() {
   box("F9:H9", "CAMISAS ENTREGUES  ·  BARRA DE PROGRESSO", PURPLE);
   num("B10:C10", "=COUNTIF(" + I + "K2:K,\"SIM\")", GREEN);
   num("D10:D10", "=COUNTIF(" + I + "I2:I,\"NÃO\")", "#8A6A55");
-  pn.getRange("F10:H10").merge().setFormula(F_("=SPARKLINE(COUNTIF(" + I + "I2:I,\"SIM\"),{\"charttype\",\"bar\";\"max\"," + LIMITE_CAMISAS + ";\"color1\",\"" + TURQ + "\"})"))
+  const COL = SEP === "," ? "," : "\\";
+  pn.getRange("F10:H10").merge().setFormula("=SPARKLINE(COUNTIF(" + I + "I2:I" + SEP + "\"SIM\")" + SEP + "{\"charttype\"" + COL + "\"bar\";\"max\"" + COL + LIMITE_CAMISAS + ";\"color1\"" + COL + "\"" + TURQ + "\"})")
     .setBackground("#FFFFFF").setBorder(true, true, true, true, false, false, "#EADBC2", SpreadsheetApp.BorderStyle.SOLID);
   pn.setRowHeight(10, 58);
 

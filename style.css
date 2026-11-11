@@ -1803,3 +1803,16 @@ html, body { overflow-x: clip; }
   mask-image: linear-gradient(to bottom, #000 45%, transparent 96%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
   -webkit-mask-composite: source-in; mask-composite: intersect;
 }
+/* Rodapé: logos de realização e apoio (fundo transparente) */
+.footer-apoio { border-top: 1px solid #654533; border-bottom: 1px solid #654533; padding: 22px 0 26px; margin: 22px 0; text-align: center; }
+.footer-apoio-title { margin: 0 0 18px; font-size: 11px; font-weight: 800; letter-spacing: .18em; color: var(--sun); }
+.footer-logos { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 22px 30px; }
+.footer-logos img { display: block; height: auto; object-fit: contain; transition: transform .2s; }
+.footer-logos img:hover { transform: scale(1.06) rotate(-2deg); }
+.lg-festival, .lg-assoc { width: 96px; }
+.lg-jau { width: 220px; }
+@media (min-width: 700px) {
+  .footer-logos { gap: 50px; }
+  .lg-festival, .lg-assoc { width: 120px; }
+  .lg-jau { width: 280px; }
+}

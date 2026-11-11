@@ -1609,3 +1609,197 @@ select:focus-visible {
   .bib-top > span:last-child { font-size: 5px; padding-right: 8px; }
   .bib-logo { margin-top: 8px; }
 }
+
+/* =================== TOPO NOVO (HX) =================== */
+:root { --red: #E3262E; --paper: #F8EAD0; }
+.bb { position: absolute; inset: 0; z-index: -1; -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C4.9%20L45.6%2C13.7%20L63.6%2C9.9%20L84.8%2C12.1%20L111.5%2C4.3%20L125.9%2C14.7%20L146.8%2C13.7%20L160.9%2C9.2%20L186.4%2C6.2%20L215.5%2C15.6%20L230.0%2C3.4%20L252.7%2C16.1%20L272.8%2C6.0%20L293.5%2C3.4%20L311.1%2C9.1%20L333.0%2C6.3%20L350.7%2C6.1%20L372.1%2C7.1%20L386.4%2C14.7%20L409.3%2C12.0%20L426.3%2C16.9%20L454.0%2C4.7%20L473.4%2C13.1%20L498.7%2C16.1%20L519.5%2C14.6%20L544.2%2C7.2%20L567.6%2C15.4%20L595.2%2C10.1%20L618.6%2C3.5%20L636.5%2C14.2%20L657.1%2C5.4%20L679.9%2C12.8%20L704.7%2C8.2%20L725.7%2C10.1%20L752.2%2C10.3%20L772.4%2C9.9%20L786.9%2C3.6%20L812.2%2C16.8%20L835.7%2C8.5%20L852.4%2C10.0%20L882.1%2C13.8%20L904.7%2C15.0%20L922.5%2C10.2%20L951.7%2C11.1%20L973.0%2C6.8%20L999.1%2C10.0%20L995.7%2C20.1%20L997.7%2C39.9%20L996.2%2C58.8%20L991.2%2C75.0%20L981.1%2C90.1%20L991.4%2C110.6%20L990.1%2C123.0%20L987.1%2C138.8%20L990.8%2C152.9%20L992.2%2C170.4%20L980.6%2C185.9%20L982.0%2C185.5%20L958.6%2C195.1%20L931.9%2C194.2%20L904.8%2C186.6%20L877.3%2C192.4%20L862.0%2C183.2%20L847.8%2C193.6%20L829.8%2C184.5%20L805.8%2C187.8%20L790.7%2C185.2%20L768.2%2C185.4%20L749.9%2C193.0%20L728.6%2C187.5%20L707.0%2C183.3%20L686.8%2C188.9%20L669.8%2C184.5%20L641.4%2C190.1%20L624.1%2C191.5%20L597.0%2C183.3%20L582.7%2C185.1%20L557.2%2C185.2%20L531.9%2C192.5%20L509.2%2C186.1%20L479.6%2C194.2%20L457.4%2C186.1%20L433.0%2C188.5%20L409.8%2C187.5%20L385.7%2C183.8%20L366.9%2C196.6%20L338.9%2C187.3%20L311.1%2C187.3%20L282.1%2C193.4%20L261.5%2C186.5%20L247.3%2C195.3%20L232.7%2C194.5%20L203.3%2C191.0%20L186.6%2C195.1%20L157.0%2C192.9%20L134.9%2C188.3%20L115.3%2C185.9%20L90.5%2C189.1%20L73.4%2C184.5%20L48.8%2C187.1%20L26.8%2C187.6%20L18.0%2C190.0%20L4.0%2C179.8%20L19.7%2C165.8%20L6.8%2C146.5%20L13.5%2C133.9%20L18.6%2C113.8%20L17.6%2C99.7%20L9.7%2C81.5%20L4.7%2C59.7%20L1.7%2C40.9%20L18.2%2C28.9%20L15.2%2C16.4Z%22%2F%3E%3Crect%20x%3D%22-21%22%20y%3D%22146%22%20width%3D%2240%22%20height%3D%225%22%20rx%3D%222.6%22%2F%3E%3Crect%20x%3D%22-3%22%20y%3D%22150%22%20width%3D%2268%22%20height%3D%227%22%20rx%3D%223.3%22%2F%3E%3Crect%20x%3D%22-29%22%20y%3D%2240%22%20width%3D%2230%22%20height%3D%226%22%20rx%3D%223.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2231%22%20width%3D%2260%22%20height%3D%228%22%20rx%3D%224.1%22%2F%3E%3Crect%20x%3D%22-19%22%20y%3D%2271%22%20width%3D%2260%22%20height%3D%227%22%20rx%3D%223.3%22%2F%3E%3Crect%20x%3D%22979%22%20y%3D%22106%22%20width%3D%2229%22%20height%3D%224%22%20rx%3D%222.2%22%2F%3E%3Crect%20x%3D%22947%22%20y%3D%22154%22%20width%3D%2267%22%20height%3D%226%22%20rx%3D%223.2%22%2F%3E%3Crect%20x%3D%22938%22%20y%3D%2262%22%20width%3D%2262%22%20height%3D%228%22%20rx%3D%223.9%22%2F%3E%3Crect%20x%3D%22996%22%20y%3D%22121%22%20width%3D%2230%22%20height%3D%224%22%20rx%3D%221.8%22%2F%3E%3Crect%20x%3D%22943%22%20y%3D%2226%22%20width%3D%2269%22%20height%3D%224%22%20rx%3D%222.2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C4.9%20L45.6%2C13.7%20L63.6%2C9.9%20L84.8%2C12.1%20L111.5%2C4.3%20L125.9%2C14.7%20L146.8%2C13.7%20L160.9%2C9.2%20L186.4%2C6.2%20L215.5%2C15.6%20L230.0%2C3.4%20L252.7%2C16.1%20L272.8%2C6.0%20L293.5%2C3.4%20L311.1%2C9.1%20L333.0%2C6.3%20L350.7%2C6.1%20L372.1%2C7.1%20L386.4%2C14.7%20L409.3%2C12.0%20L426.3%2C16.9%20L454.0%2C4.7%20L473.4%2C13.1%20L498.7%2C16.1%20L519.5%2C14.6%20L544.2%2C7.2%20L567.6%2C15.4%20L595.2%2C10.1%20L618.6%2C3.5%20L636.5%2C14.2%20L657.1%2C5.4%20L679.9%2C12.8%20L704.7%2C8.2%20L725.7%2C10.1%20L752.2%2C10.3%20L772.4%2C9.9%20L786.9%2C3.6%20L812.2%2C16.8%20L835.7%2C8.5%20L852.4%2C10.0%20L882.1%2C13.8%20L904.7%2C15.0%20L922.5%2C10.2%20L951.7%2C11.1%20L973.0%2C6.8%20L999.1%2C10.0%20L995.7%2C20.1%20L997.7%2C39.9%20L996.2%2C58.8%20L991.2%2C75.0%20L981.1%2C90.1%20L991.4%2C110.6%20L990.1%2C123.0%20L987.1%2C138.8%20L990.8%2C152.9%20L992.2%2C170.4%20L980.6%2C185.9%20L982.0%2C185.5%20L958.6%2C195.1%20L931.9%2C194.2%20L904.8%2C186.6%20L877.3%2C192.4%20L862.0%2C183.2%20L847.8%2C193.6%20L829.8%2C184.5%20L805.8%2C187.8%20L790.7%2C185.2%20L768.2%2C185.4%20L749.9%2C193.0%20L728.6%2C187.5%20L707.0%2C183.3%20L686.8%2C188.9%20L669.8%2C184.5%20L641.4%2C190.1%20L624.1%2C191.5%20L597.0%2C183.3%20L582.7%2C185.1%20L557.2%2C185.2%20L531.9%2C192.5%20L509.2%2C186.1%20L479.6%2C194.2%20L457.4%2C186.1%20L433.0%2C188.5%20L409.8%2C187.5%20L385.7%2C183.8%20L366.9%2C196.6%20L338.9%2C187.3%20L311.1%2C187.3%20L282.1%2C193.4%20L261.5%2C186.5%20L247.3%2C195.3%20L232.7%2C194.5%20L203.3%2C191.0%20L186.6%2C195.1%20L157.0%2C192.9%20L134.9%2C188.3%20L115.3%2C185.9%20L90.5%2C189.1%20L73.4%2C184.5%20L48.8%2C187.1%20L26.8%2C187.6%20L18.0%2C190.0%20L4.0%2C179.8%20L19.7%2C165.8%20L6.8%2C146.5%20L13.5%2C133.9%20L18.6%2C113.8%20L17.6%2C99.7%20L9.7%2C81.5%20L4.7%2C59.7%20L1.7%2C40.9%20L18.2%2C28.9%20L15.2%2C16.4Z%22%2F%3E%3Crect%20x%3D%22-21%22%20y%3D%22146%22%20width%3D%2240%22%20height%3D%225%22%20rx%3D%222.6%22%2F%3E%3Crect%20x%3D%22-3%22%20y%3D%22150%22%20width%3D%2268%22%20height%3D%227%22%20rx%3D%223.3%22%2F%3E%3Crect%20x%3D%22-29%22%20y%3D%2240%22%20width%3D%2230%22%20height%3D%226%22%20rx%3D%223.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2231%22%20width%3D%2260%22%20height%3D%228%22%20rx%3D%224.1%22%2F%3E%3Crect%20x%3D%22-19%22%20y%3D%2271%22%20width%3D%2260%22%20height%3D%227%22%20rx%3D%223.3%22%2F%3E%3Crect%20x%3D%22979%22%20y%3D%22106%22%20width%3D%2229%22%20height%3D%224%22%20rx%3D%222.2%22%2F%3E%3Crect%20x%3D%22947%22%20y%3D%22154%22%20width%3D%2267%22%20height%3D%226%22%20rx%3D%223.2%22%2F%3E%3Crect%20x%3D%22938%22%20y%3D%2262%22%20width%3D%2262%22%20height%3D%228%22%20rx%3D%223.9%22%2F%3E%3Crect%20x%3D%22996%22%20y%3D%22121%22%20width%3D%2230%22%20height%3D%224%22%20rx%3D%221.8%22%2F%3E%3Crect%20x%3D%22943%22%20y%3D%2226%22%20width%3D%2269%22%20height%3D%224%22%20rx%3D%222.2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat; }
+.bb-coffee { background: var(--coffee); }
+.bb-pink { background: var(--pink); -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C11.7%20L43.9%2C14.1%20L72.9%2C13.4%20L101.7%2C3.4%20L123.2%2C16.2%20L147.5%2C15.6%20L163.3%2C9.6%20L181.3%2C10.6%20L204.5%2C3.2%20L221.9%2C6.9%20L250.6%2C13.7%20L267.2%2C14.2%20L283.4%2C11.6%20L299.4%2C3.0%20L327.4%2C5.9%20L344.8%2C16.8%20L372.8%2C7.1%20L402.1%2C10.5%20L427.0%2C5.9%20L456.0%2C12.7%20L485.5%2C15.5%20L504.3%2C8.1%20L520.9%2C5.0%20L536.0%2C7.2%20L559.6%2C3.0%20L584.5%2C7.7%20L603.4%2C14.5%20L625.1%2C7.4%20L646.8%2C12.9%20L661.7%2C16.7%20L676.1%2C13.5%20L703.6%2C3.3%20L730.2%2C8.1%20L753.5%2C3.1%20L768.2%2C5.5%20L797.5%2C5.8%20L823.6%2C16.0%20L852.7%2C7.8%20L872.4%2C10.3%20L898.8%2C4.5%20L924.7%2C14.2%20L952.5%2C3.5%20L981.6%2C4.3%20L992.2%2C10.0%20L986.8%2C31.0%20L990.9%2C52.1%20L986.3%2C65.9%20L981.6%2C78.0%20L993.8%2C89.8%20L983.2%2C111.7%20L999.7%2C122.3%20L988.1%2C138.7%20L991.9%2C151.6%20L989.1%2C171.5%20L981.1%2C186.5%20L982.0%2C183.5%20L960.1%2C194.7%20L944.0%2C193.2%20L914.8%2C191.8%20L888.2%2C184.5%20L867.3%2C185.1%20L839.7%2C187.1%20L818.5%2C197.0%20L790.9%2C196.7%20L769.6%2C189.8%20L743.9%2C189.7%20L725.3%2C188.7%20L708.9%2C188.3%20L679.1%2C196.4%20L655.1%2C190.0%20L635.7%2C184.2%20L617.3%2C193.9%20L589.4%2C188.1%20L562.9%2C193.8%20L537.7%2C192.3%20L511.6%2C188.1%20L486.3%2C186.9%20L464.5%2C193.8%20L439.5%2C187.1%20L410.4%2C192.1%20L387.1%2C183.2%20L364.3%2C186.5%20L339.6%2C189.5%20L312.5%2C192.1%20L285.7%2C187.9%20L261.4%2C193.3%20L234.2%2C187.9%20L206.7%2C195.2%20L181.7%2C196.7%20L152.4%2C190.3%20L129.9%2C185.3%20L102.5%2C196.1%20L80.9%2C192.7%20L55.4%2C193.2%20L38.6%2C193.9%20L13.3%2C190.0%20L12.5%2C175.0%20L12.7%2C155.7%20L0.6%2C137.0%20L8.8%2C125.1%20L4.4%2C107.3%20L12.6%2C89.1%20L9.4%2C78.6%20L1.1%2C65.8%20L6.3%2C54.2%20L3.9%2C42.1%20L9.3%2C31.6%20L12.2%2C17.1Z%22%2F%3E%3Crect%20x%3D%22-18%22%20y%3D%2256%22%20width%3D%2225%22%20height%3D%228%22%20rx%3D%224.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2262%22%20width%3D%2230%22%20height%3D%225%22%20rx%3D%222.7%22%2F%3E%3Crect%20x%3D%22-27%22%20y%3D%2276%22%20width%3D%2253%22%20height%3D%223%22%20rx%3D%221.6%22%2F%3E%3Crect%20x%3D%22-1%22%20y%3D%22102%22%20width%3D%2251%22%20height%3D%225%22%20rx%3D%222.5%22%2F%3E%3Crect%20x%3D%22-11%22%20y%3D%22143%22%20width%3D%2262%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3Crect%20x%3D%22965%22%20y%3D%2275%22%20width%3D%2252%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22958%22%20y%3D%22164%22%20width%3D%2252%22%20height%3D%229%22%20rx%3D%224.4%22%2F%3E%3Crect%20x%3D%22987%22%20y%3D%22154%22%20width%3D%2230%22%20height%3D%223%22%20rx%3D%221.5%22%2F%3E%3Crect%20x%3D%22973%22%20y%3D%22112%22%20width%3D%2253%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22974%22%20y%3D%2276%22%20width%3D%2235%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C11.7%20L43.9%2C14.1%20L72.9%2C13.4%20L101.7%2C3.4%20L123.2%2C16.2%20L147.5%2C15.6%20L163.3%2C9.6%20L181.3%2C10.6%20L204.5%2C3.2%20L221.9%2C6.9%20L250.6%2C13.7%20L267.2%2C14.2%20L283.4%2C11.6%20L299.4%2C3.0%20L327.4%2C5.9%20L344.8%2C16.8%20L372.8%2C7.1%20L402.1%2C10.5%20L427.0%2C5.9%20L456.0%2C12.7%20L485.5%2C15.5%20L504.3%2C8.1%20L520.9%2C5.0%20L536.0%2C7.2%20L559.6%2C3.0%20L584.5%2C7.7%20L603.4%2C14.5%20L625.1%2C7.4%20L646.8%2C12.9%20L661.7%2C16.7%20L676.1%2C13.5%20L703.6%2C3.3%20L730.2%2C8.1%20L753.5%2C3.1%20L768.2%2C5.5%20L797.5%2C5.8%20L823.6%2C16.0%20L852.7%2C7.8%20L872.4%2C10.3%20L898.8%2C4.5%20L924.7%2C14.2%20L952.5%2C3.5%20L981.6%2C4.3%20L992.2%2C10.0%20L986.8%2C31.0%20L990.9%2C52.1%20L986.3%2C65.9%20L981.6%2C78.0%20L993.8%2C89.8%20L983.2%2C111.7%20L999.7%2C122.3%20L988.1%2C138.7%20L991.9%2C151.6%20L989.1%2C171.5%20L981.1%2C186.5%20L982.0%2C183.5%20L960.1%2C194.7%20L944.0%2C193.2%20L914.8%2C191.8%20L888.2%2C184.5%20L867.3%2C185.1%20L839.7%2C187.1%20L818.5%2C197.0%20L790.9%2C196.7%20L769.6%2C189.8%20L743.9%2C189.7%20L725.3%2C188.7%20L708.9%2C188.3%20L679.1%2C196.4%20L655.1%2C190.0%20L635.7%2C184.2%20L617.3%2C193.9%20L589.4%2C188.1%20L562.9%2C193.8%20L537.7%2C192.3%20L511.6%2C188.1%20L486.3%2C186.9%20L464.5%2C193.8%20L439.5%2C187.1%20L410.4%2C192.1%20L387.1%2C183.2%20L364.3%2C186.5%20L339.6%2C189.5%20L312.5%2C192.1%20L285.7%2C187.9%20L261.4%2C193.3%20L234.2%2C187.9%20L206.7%2C195.2%20L181.7%2C196.7%20L152.4%2C190.3%20L129.9%2C185.3%20L102.5%2C196.1%20L80.9%2C192.7%20L55.4%2C193.2%20L38.6%2C193.9%20L13.3%2C190.0%20L12.5%2C175.0%20L12.7%2C155.7%20L0.6%2C137.0%20L8.8%2C125.1%20L4.4%2C107.3%20L12.6%2C89.1%20L9.4%2C78.6%20L1.1%2C65.8%20L6.3%2C54.2%20L3.9%2C42.1%20L9.3%2C31.6%20L12.2%2C17.1Z%22%2F%3E%3Crect%20x%3D%22-18%22%20y%3D%2256%22%20width%3D%2225%22%20height%3D%228%22%20rx%3D%224.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2262%22%20width%3D%2230%22%20height%3D%225%22%20rx%3D%222.7%22%2F%3E%3Crect%20x%3D%22-27%22%20y%3D%2276%22%20width%3D%2253%22%20height%3D%223%22%20rx%3D%221.6%22%2F%3E%3Crect%20x%3D%22-1%22%20y%3D%22102%22%20width%3D%2251%22%20height%3D%225%22%20rx%3D%222.5%22%2F%3E%3Crect%20x%3D%22-11%22%20y%3D%22143%22%20width%3D%2262%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3Crect%20x%3D%22965%22%20y%3D%2275%22%20width%3D%2252%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22958%22%20y%3D%22164%22%20width%3D%2252%22%20height%3D%229%22%20rx%3D%224.4%22%2F%3E%3Crect%20x%3D%22987%22%20y%3D%22154%22%20width%3D%2230%22%20height%3D%223%22%20rx%3D%221.5%22%2F%3E%3Crect%20x%3D%22973%22%20y%3D%22112%22%20width%3D%2253%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22974%22%20y%3D%2276%22%20width%3D%2235%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+.bb-sun { background: var(--sun); -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C11.7%20L43.9%2C14.1%20L72.9%2C13.4%20L101.7%2C3.4%20L123.2%2C16.2%20L147.5%2C15.6%20L163.3%2C9.6%20L181.3%2C10.6%20L204.5%2C3.2%20L221.9%2C6.9%20L250.6%2C13.7%20L267.2%2C14.2%20L283.4%2C11.6%20L299.4%2C3.0%20L327.4%2C5.9%20L344.8%2C16.8%20L372.8%2C7.1%20L402.1%2C10.5%20L427.0%2C5.9%20L456.0%2C12.7%20L485.5%2C15.5%20L504.3%2C8.1%20L520.9%2C5.0%20L536.0%2C7.2%20L559.6%2C3.0%20L584.5%2C7.7%20L603.4%2C14.5%20L625.1%2C7.4%20L646.8%2C12.9%20L661.7%2C16.7%20L676.1%2C13.5%20L703.6%2C3.3%20L730.2%2C8.1%20L753.5%2C3.1%20L768.2%2C5.5%20L797.5%2C5.8%20L823.6%2C16.0%20L852.7%2C7.8%20L872.4%2C10.3%20L898.8%2C4.5%20L924.7%2C14.2%20L952.5%2C3.5%20L981.6%2C4.3%20L992.2%2C10.0%20L986.8%2C31.0%20L990.9%2C52.1%20L986.3%2C65.9%20L981.6%2C78.0%20L993.8%2C89.8%20L983.2%2C111.7%20L999.7%2C122.3%20L988.1%2C138.7%20L991.9%2C151.6%20L989.1%2C171.5%20L981.1%2C186.5%20L982.0%2C183.5%20L960.1%2C194.7%20L944.0%2C193.2%20L914.8%2C191.8%20L888.2%2C184.5%20L867.3%2C185.1%20L839.7%2C187.1%20L818.5%2C197.0%20L790.9%2C196.7%20L769.6%2C189.8%20L743.9%2C189.7%20L725.3%2C188.7%20L708.9%2C188.3%20L679.1%2C196.4%20L655.1%2C190.0%20L635.7%2C184.2%20L617.3%2C193.9%20L589.4%2C188.1%20L562.9%2C193.8%20L537.7%2C192.3%20L511.6%2C188.1%20L486.3%2C186.9%20L464.5%2C193.8%20L439.5%2C187.1%20L410.4%2C192.1%20L387.1%2C183.2%20L364.3%2C186.5%20L339.6%2C189.5%20L312.5%2C192.1%20L285.7%2C187.9%20L261.4%2C193.3%20L234.2%2C187.9%20L206.7%2C195.2%20L181.7%2C196.7%20L152.4%2C190.3%20L129.9%2C185.3%20L102.5%2C196.1%20L80.9%2C192.7%20L55.4%2C193.2%20L38.6%2C193.9%20L13.3%2C190.0%20L12.5%2C175.0%20L12.7%2C155.7%20L0.6%2C137.0%20L8.8%2C125.1%20L4.4%2C107.3%20L12.6%2C89.1%20L9.4%2C78.6%20L1.1%2C65.8%20L6.3%2C54.2%20L3.9%2C42.1%20L9.3%2C31.6%20L12.2%2C17.1Z%22%2F%3E%3Crect%20x%3D%22-18%22%20y%3D%2256%22%20width%3D%2225%22%20height%3D%228%22%20rx%3D%224.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2262%22%20width%3D%2230%22%20height%3D%225%22%20rx%3D%222.7%22%2F%3E%3Crect%20x%3D%22-27%22%20y%3D%2276%22%20width%3D%2253%22%20height%3D%223%22%20rx%3D%221.6%22%2F%3E%3Crect%20x%3D%22-1%22%20y%3D%22102%22%20width%3D%2251%22%20height%3D%225%22%20rx%3D%222.5%22%2F%3E%3Crect%20x%3D%22-11%22%20y%3D%22143%22%20width%3D%2262%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3Crect%20x%3D%22965%22%20y%3D%2275%22%20width%3D%2252%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22958%22%20y%3D%22164%22%20width%3D%2252%22%20height%3D%229%22%20rx%3D%224.4%22%2F%3E%3Crect%20x%3D%22987%22%20y%3D%22154%22%20width%3D%2230%22%20height%3D%223%22%20rx%3D%221.5%22%2F%3E%3Crect%20x%3D%22973%22%20y%3D%22112%22%20width%3D%2253%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22974%22%20y%3D%2276%22%20width%3D%2235%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22-30%200%201060%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cg%20fill%3D%22%23000%22%3E%3Cpath%20d%3D%22M18.0%2C11.7%20L43.9%2C14.1%20L72.9%2C13.4%20L101.7%2C3.4%20L123.2%2C16.2%20L147.5%2C15.6%20L163.3%2C9.6%20L181.3%2C10.6%20L204.5%2C3.2%20L221.9%2C6.9%20L250.6%2C13.7%20L267.2%2C14.2%20L283.4%2C11.6%20L299.4%2C3.0%20L327.4%2C5.9%20L344.8%2C16.8%20L372.8%2C7.1%20L402.1%2C10.5%20L427.0%2C5.9%20L456.0%2C12.7%20L485.5%2C15.5%20L504.3%2C8.1%20L520.9%2C5.0%20L536.0%2C7.2%20L559.6%2C3.0%20L584.5%2C7.7%20L603.4%2C14.5%20L625.1%2C7.4%20L646.8%2C12.9%20L661.7%2C16.7%20L676.1%2C13.5%20L703.6%2C3.3%20L730.2%2C8.1%20L753.5%2C3.1%20L768.2%2C5.5%20L797.5%2C5.8%20L823.6%2C16.0%20L852.7%2C7.8%20L872.4%2C10.3%20L898.8%2C4.5%20L924.7%2C14.2%20L952.5%2C3.5%20L981.6%2C4.3%20L992.2%2C10.0%20L986.8%2C31.0%20L990.9%2C52.1%20L986.3%2C65.9%20L981.6%2C78.0%20L993.8%2C89.8%20L983.2%2C111.7%20L999.7%2C122.3%20L988.1%2C138.7%20L991.9%2C151.6%20L989.1%2C171.5%20L981.1%2C186.5%20L982.0%2C183.5%20L960.1%2C194.7%20L944.0%2C193.2%20L914.8%2C191.8%20L888.2%2C184.5%20L867.3%2C185.1%20L839.7%2C187.1%20L818.5%2C197.0%20L790.9%2C196.7%20L769.6%2C189.8%20L743.9%2C189.7%20L725.3%2C188.7%20L708.9%2C188.3%20L679.1%2C196.4%20L655.1%2C190.0%20L635.7%2C184.2%20L617.3%2C193.9%20L589.4%2C188.1%20L562.9%2C193.8%20L537.7%2C192.3%20L511.6%2C188.1%20L486.3%2C186.9%20L464.5%2C193.8%20L439.5%2C187.1%20L410.4%2C192.1%20L387.1%2C183.2%20L364.3%2C186.5%20L339.6%2C189.5%20L312.5%2C192.1%20L285.7%2C187.9%20L261.4%2C193.3%20L234.2%2C187.9%20L206.7%2C195.2%20L181.7%2C196.7%20L152.4%2C190.3%20L129.9%2C185.3%20L102.5%2C196.1%20L80.9%2C192.7%20L55.4%2C193.2%20L38.6%2C193.9%20L13.3%2C190.0%20L12.5%2C175.0%20L12.7%2C155.7%20L0.6%2C137.0%20L8.8%2C125.1%20L4.4%2C107.3%20L12.6%2C89.1%20L9.4%2C78.6%20L1.1%2C65.8%20L6.3%2C54.2%20L3.9%2C42.1%20L9.3%2C31.6%20L12.2%2C17.1Z%22%2F%3E%3Crect%20x%3D%22-18%22%20y%3D%2256%22%20width%3D%2225%22%20height%3D%228%22%20rx%3D%224.2%22%2F%3E%3Crect%20x%3D%22-5%22%20y%3D%2262%22%20width%3D%2230%22%20height%3D%225%22%20rx%3D%222.7%22%2F%3E%3Crect%20x%3D%22-27%22%20y%3D%2276%22%20width%3D%2253%22%20height%3D%223%22%20rx%3D%221.6%22%2F%3E%3Crect%20x%3D%22-1%22%20y%3D%22102%22%20width%3D%2251%22%20height%3D%225%22%20rx%3D%222.5%22%2F%3E%3Crect%20x%3D%22-11%22%20y%3D%22143%22%20width%3D%2262%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3Crect%20x%3D%22965%22%20y%3D%2275%22%20width%3D%2252%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22958%22%20y%3D%22164%22%20width%3D%2252%22%20height%3D%229%22%20rx%3D%224.4%22%2F%3E%3Crect%20x%3D%22987%22%20y%3D%22154%22%20width%3D%2230%22%20height%3D%223%22%20rx%3D%221.5%22%2F%3E%3Crect%20x%3D%22973%22%20y%3D%22112%22%20width%3D%2253%22%20height%3D%224%22%20rx%3D%221.9%22%2F%3E%3Crect%20x%3D%22974%22%20y%3D%2276%22%20width%3D%2235%22%20height%3D%226%22%20rx%3D%222.8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+.sw { position: absolute; left: 0; right: 0; height: 14px; -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%2040%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M6%2C26%20C80%2C10%20200%2C6%20392%2C8%20C396%2C12%20394%2C16%20388%2C17%20C260%2C20%20150%2C26%2040%2C36%20C20%2C38%204%2C34%206%2C26Z%22%2F%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M30%2C34%20C120%2C26%20220%2C22%20330%2C22%20L332%2C25%20C230%2C27%20130%2C32%2034%2C38Z%22%20opacity%3D%22.7%22%2F%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%2040%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M6%2C26%20C80%2C10%20200%2C6%20392%2C8%20C396%2C12%20394%2C16%20388%2C17%20C260%2C20%20150%2C26%2040%2C36%20C20%2C38%204%2C34%206%2C26Z%22%2F%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M30%2C34%20C120%2C26%20220%2C22%20330%2C22%20L332%2C25%20C230%2C27%20130%2C32%2034%2C38Z%22%20opacity%3D%22.7%22%2F%3E%3C%2Fsvg%3E") 0 0/100% 100% no-repeat; }
+.sw-sun { background: var(--sun); }
+.sw-pink { background: var(--pink); }
+
+/* topo transparente sobre o hero */
+.topbar { position: fixed; left: 0; right: 0; top: 0; background: transparent; }
+.topbar.scrolled, body.menu-open .topbar { background: var(--cream); }
+.brand img { width: 64px; height: 64px; filter: drop-shadow(0 2px 0 #fff8) drop-shadow(0 3px 6px #2a140b33); }
+.menu-toggle { background: transparent; border: 0; }
+.menu-toggle span { height: 4px; left: 9px; right: 9px; }
+.menu-toggle span:nth-child(1) { right: 15px; }
+.menu-toggle span:nth-child(2) { right: 9px; }
+.menu-toggle span:nth-child(3) { right: 19px; }
+@media (max-width: 979px) { .topbar .top-cta { display: none; } }
+
+.hx {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: 92px 5% 0;
+  background:
+    radial-gradient(120% 60% at 20% 30%, #fff7e8 0%, transparent 60%),
+    radial-gradient(90% 50% at 85% 70%, #ffd89a66 0%, transparent 70%),
+    linear-gradient(180deg, var(--paper) 0%, #f7dfb5 70%, #f3cf98 100%);
+  color: var(--coffee);
+}
+.hx-faixas { position: absolute; z-index: -1; background: url(assets/faixas.svg) 0 0/auto 100% repeat-x; pointer-events: none; }
+.hx-faixas-r { width: 230px; height: 760px; right: -120px; top: -150px; transform: rotate(32deg); box-shadow: -6px 0 0 var(--coffee); }
+.hx-faixas-l { width: 120px; height: 1100px; left: -92px; top: 120px; transform: rotate(-14deg); opacity: .95; }
+.hx-confete { position: absolute; inset: 0; z-index: -1; background: url(assets/confete.svg) 0 0/420px auto repeat; opacity: .9; pointer-events: none; animation: confeteDrift 26s linear infinite; }
+@keyframes confeteDrift { to { background-position: 0 620px; } }
+
+.hx-pill {
+  position: absolute; top: 20px; left: 50%; transform: translateX(-46%) rotate(-1.5deg);
+  z-index: 13; margin: 0; padding: 9px 18px 9px 14px; display: flex; align-items: center; gap: 7px;
+  color: var(--cream); font-size: 10px; font-weight: 800; letter-spacing: .1em; white-space: nowrap; isolation: isolate;
+}
+.hx-pill svg { width: 15px; height: 15px; fill: var(--pink); flex-shrink: 0; }
+.topbar.scrolled ~ main .hx-pill { opacity: 0; }
+
+.hx-main { display: grid; grid-template-columns: 1.08fr .92fr; gap: 8px; align-items: start; position: relative; z-index: 1; }
+.hx-title h1 { position: relative; margin: 6px 0 0; line-height: .86; letter-spacing: 0; text-shadow: none; transform: none; font-size: inherit; }
+.t-afro { display: block; font-family: "Archivo Black", sans-serif; font-size: clamp(54px, 16.5vw, 120px); color: #4a2412; letter-spacing: -.02em; text-shadow: 3px 3px 0 #fff6; }
+.t-run { display: block; font-family: "Knewave", "Anton", sans-serif; font-weight: 400; font-size: clamp(64px, 20vw, 150px); color: var(--pink); transform: rotate(-6deg) translate(-4px, -2px); line-height: .95;
+  text-shadow: 3px 3px 0 var(--cream), 6px 6px 0 #2a140b2e; }
+.hx-title h1 .sw { position: relative; display: block; width: 92%; height: 18px; margin: -4px 0 0 2px; transform: rotate(-4deg); }
+.hx-tag { position: relative; margin: 18px 0 0; font-size: clamp(16px, 4.6vw, 26px); line-height: 1.15; font-weight: 800; transform: rotate(-3deg); padding-bottom: 12px; }
+.hx-tag .sw { bottom: 0; width: 70%; height: 10px; }
+
+.hx-bib-wrap { position: relative; margin-top: 30px; transform: rotate(5deg); animation: hxBob 3.4s ease-in-out infinite; }
+@keyframes hxBob { 50% { transform: rotate(3deg) translateY(-7px); } }
+.hx-bib { position: relative; background: #fffaf0; padding: 12px 10px 12px; border-radius: 3px;
+  box-shadow: 0 1px 0 #e9dcc4, 6px 9px 0 #2a140b26, 0 14px 30px #2a140b33; }
+.tack { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #e7b38a, #8a4b25 70%); box-shadow: 0 1px 1px #0005; }
+.t1 { left: 6px; top: 6px; } .t2 { right: 6px; top: 6px; } .t3 { left: 6px; bottom: 6px; } .t4 { right: 6px; bottom: 6px; }
+.hx-bib-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 0 10px; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 9px; letter-spacing: .02em; }
+.hx-bib-name { font-family: "Anton", sans-serif; font-size: 13px; font-weight: 400; letter-spacing: .02em; }
+.hx-bib-name b { color: var(--orange); font-weight: 400; }
+.hx-bib-logo { display: block; width: 92%; margin: 6px auto 0; }
+.hx-bib-year { text-align: center; font-family: "Archivo Black", sans-serif; font-size: clamp(30px, 10vw, 64px); color: var(--turq); line-height: 1; margin-top: 2px; text-shadow: 2px 2px 0 #00b3a733; }
+.hx-bib-km { display: flex; align-items: center; gap: 8px; justify-content: center; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 12px; margin-top: 4px; }
+.hx-bib-km span { height: 1.5px; flex: 1; background: var(--coffee); }
+.hx-sticker { position: absolute; right: -14px; bottom: -34px; width: 74px; height: 74px; border-radius: 50%; background: var(--pink); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--pink), 3px 5px 0 #2a140b33;
+  display: grid; place-items: center; transform: rotate(-8deg); color: #fff; text-align: center; }
+.hx-sticker b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 16px; line-height: .92; margin-top: -6px; }
+.hx-sticker .sw { left: 18%; right: 18%; bottom: 16px; height: 6px; }
+
+.hx-key { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; margin: 28px 0 18px; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: clamp(15px, 4.4vw, 22px); white-space: nowrap; }
+.hx-key span { display: flex; align-items: center; gap: 6px; }
+.hx-key svg { width: 1.3em; height: 1.3em; fill: var(--coffee); flex-shrink: 0; }
+.hx-key i { width: 2px; height: 26px; background: var(--coffee); opacity: .8; }
+
+.hx-crowd { position: absolute; z-index: 0; background: url(assets/multidao.svg) center bottom/cover no-repeat; pointer-events: none; }
+.hx-crowd-r { right: -5%; width: 62%; height: 150px; margin-top: -78px; }
+.hx-crowd-l { left: -6%; width: 56%; height: 120px; margin-top: -40px; }
+
+.hx-cta { position: relative; z-index: 2; isolation: isolate; display: flex; align-items: center; justify-content: center; gap: 16px; text-decoration: none; color: #fff; padding: 22px 20px; margin: 18px -1% 0; transform: rotate(-1deg); transition: transform .2s; }
+.hx-cta:hover { transform: rotate(-1deg) scale(1.03); }
+.hx-cta-edge { inset: -4px -6px; transform: rotate(.6deg); }
+.hx-cta b { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: clamp(26px, 8vw, 40px); letter-spacing: .01em; line-height: 1; }
+.hx-cta i { width: 42px; height: 42px; border-radius: 50%; background: var(--sun); color: var(--coffee); display: grid; place-items: center; flex-shrink: 0; animation: pulse 1.6s infinite; }
+.hx-cta i svg { width: 22px; height: 22px; }
+.hx-cta::before { content: ""; position: absolute; left: -26px; top: -14px; width: 34px; height: 34px; z-index: 3;
+  background: radial-gradient(circle, var(--sun) 0 3px, transparent 4px) 0 0/12px 12px; opacity: 0; }
+
+.hx-count { position: relative; z-index: 2; isolation: isolate; margin: 26px -3% 0; padding: 16px 6% 22px; transform: rotate(-1.5deg); text-align: center; }
+.hx-count-title { margin: 0 0 12px; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: clamp(22px, 6.6vw, 34px); line-height: 1; color: var(--coffee); }
+.hx-count-boxes { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.hx-count-boxes div { flex: 1; max-width: 92px; background: var(--coffee); border-radius: 10px; padding: 9px 4px 7px; box-shadow: 0 4px 0 #0003; }
+.hx-count-boxes strong { display: block; font-family: "Outfit", sans-serif; font-weight: 800; font-size: clamp(30px, 9vw, 46px); line-height: 1; color: #fff; }
+.hx-count-boxes small { display: block; margin-top: 3px; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .04em; color: var(--sun); }
+.hx-count-boxes i { width: 7px; height: 7px; background: var(--coffee); transform: rotate(45deg); flex-shrink: 0; }
+
+.hx-band { position: relative; z-index: 1; height: 46px; margin: 22px -6% 0; background: url(assets/faixa-horizontal.svg) 0 0/auto 100% repeat-x; transform: rotate(-2deg); box-shadow: 0 -3px 0 var(--coffee), 0 3px 0 var(--coffee); }
+
+.hx-bottom { position: relative; z-index: 2; background: linear-gradient(180deg, #3a1d10, var(--coffee)); margin: -18px -6% 0; padding: 34px 7% 30px; }
+.hx-bottom::before { content: ""; position: absolute; inset: 0; background: url(assets/faixas.svg) 0 0/auto 100% repeat-x; opacity: .12; pointer-events: none; }
+.hx-early { position: relative; isolation: isolate; width: 86%; padding: 14px 18px 16px; transform: rotate(-3deg); color: #fff; text-align: center; }
+.hx-early p { margin: 0; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; line-height: .95; }
+.hx-early span { display: block; font-size: clamp(22px, 6.6vw, 34px); }
+.hx-early b { display: block; font-size: clamp(38px, 11.5vw, 60px); }
+.hx-early em { font-style: italic; color: var(--sun); }
+.hx-arrow { position: absolute; right: -28%; top: 18px; width: 26%; color: var(--sun); transform: rotate(6deg); }
+
+.hx-where { position: relative; isolation: isolate; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; margin-top: 22px; padding: 20px 18px; color: var(--cream); }
+.hx-where .bb { background: #1c0d06; border: 0; box-shadow: none; }
+.hx-where::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 14px; border: 2px solid #ffffff1c; }
+.hx-where-pin svg { width: 46px; height: 46px; fill: var(--sun); }
+.hx-where h2 { margin: 0 0 4px; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 26px; color: var(--sun); letter-spacing: 0; line-height: 1; }
+.hx-where p { margin: 0; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .02em; }
+.hx-where p.small { font-family: "Outfit", sans-serif; font-weight: 500; font-size: 13px; opacity: .9; margin-top: 2px; }
+.hx-map { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 18px; border: 2px solid var(--sun); border-radius: 30px; color: var(--cream); text-decoration: none; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 15px; letter-spacing: .06em; }
+.hx-map svg { width: 16px; height: 16px; fill: var(--sun); }
+.hx-map:hover { background: var(--sun); color: var(--coffee); }
+.hx-map:hover svg { fill: var(--coffee); }
+.hx + .marquee { margin-top: 0; }
+
+@media (min-width: 560px) {
+  .hx-where { grid-template-columns: auto 1fr auto; }
+  .hx-map { grid-column: auto; margin-top: 0; justify-self: end; }
+}
+@media (min-width: 900px) {
+  .hx { padding: 110px 8% 0; }
+  .hx-pill { position: relative; top: 0; left: 0; transform: rotate(-1.5deg); display: inline-flex; margin-bottom: 10px; font-size: 12px; z-index: 2; }
+  .hx-main { grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .t-afro { font-size: clamp(110px, 10vw, 160px); }
+  .t-run { font-size: clamp(140px, 13vw, 200px); }
+  .hx-tag { font-size: 30px; }
+  .hx-bib-wrap { max-width: 400px; justify-self: center; margin-top: 0; }
+  .hx-bib { padding: 18px 16px; }
+  .hx-bib-top { font-size: 13px; } .hx-bib-name { font-size: 20px; }
+  .hx-bib-km { font-size: 18px; }
+  .hx-sticker { width: 118px; height: 118px; right: -30px; bottom: -40px; }
+  .hx-sticker b { font-size: 26px; } .hx-sticker .sw { bottom: 24px; height: 8px; }
+  .hx-faixas-r { width: 360px; height: 1200px; right: -150px; top: -260px; }
+  .hx-faixas-l { width: 150px; left: -120px; height: 1500px; }
+  .hx-key { font-size: 24px; gap: 18px; margin-top: 10px; }
+  .hx-cta { max-width: 620px; margin: 10px 0 0; justify-content: space-between; padding: 26px 34px; }
+  .hx-crowd-r { width: 46%; height: 210px; margin-top: -150px; }
+  .hx-crowd-l { width: 34%; height: 170px; margin-top: -70px; }
+  .hx-count { max-width: 760px; margin: 40px auto 0; padding: 22px 50px 28px; }
+  .hx-band { height: 56px; margin-top: 34px; }
+  .hx-bottom { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; padding: 50px 10% 50px; }
+  .hx-early { width: auto; }
+  .hx-arrow { display: none; }
+  .hx-where { margin-top: 0; padding: 26px 28px; }
+}
+@media (prefers-reduced-motion: reduce) { .hx-confete, .hx-bib-wrap { animation: none; } }
+/* ajustes finos do topo */
+html, body { overflow-x: clip; }
+.hx-faixas-r { width: 112px; height: 980px; right: -46px; top: -120px; transform: rotate(16deg); }
+.hx-faixas-l { width: 64px; left: -40px; top: 360px; height: 1100px; transform: rotate(-8deg); }
+.hx-bib-top { padding: 0 8px; white-space: nowrap; }
+.hx-sticker { right: -16px; bottom: -46px; }
+.hx-crowd-r { width: 70%; height: 128px; margin-top: -70px; }
+@media (max-width: 899px) {
+  .hx-bib-name { font-size: 11px; }
+  .hx-bib-top > span:last-child { font-size: 7.5px; }
+  .hx-tag { font-size: clamp(14px, 4vw, 20px); }
+  .hx-main { grid-template-columns: 1.05fr .95fr; }
+}
+@media (min-width: 900px) {
+  .hx-faixas-r { width: 210px; height: 1500px; right: -60px; top: -200px; }
+  .hx-faixas-l { width: 90px; left: -60px; top: 300px; }
+}
+.hx-crowd-r { margin-top: -18px; height: 112px; width: 66%; }
+.hx-crowd-l { margin-top: -30px; height: 104px; }
+@media (min-width: 900px) { .hx-crowd-r { margin-top: -120px; height: 190px; width: 40%; } }
+.hx-crowd { -webkit-mask-image: linear-gradient(#000 55%, transparent 98%); mask-image: linear-gradient(#000 55%, transparent 98%); }
+.hx-crowd-r { height: 92px; }
+.hx-where { background: #1c0d06; border: 1.5px solid #ffffff26; border-radius: 16px; box-shadow: 0 10px 24px #0006; }
+.hx-where .bb, .hx-where::after { display: none; }
+@media (min-width: 900px) {
+  .hx-crowd-r { margin-top: -30px; height: 150px; width: 44%; right: 0; }
+  .hx-title h1 .sw { width: 78%; max-width: 440px; }
+  .hx-tag .sw { width: 64%; }
+}
+.hx-band { margin-left: calc(-5vw - 8px); margin-right: calc(-5vw - 8px); }
+.hx-bottom { margin-left: -5vw; margin-right: -5vw; }
+.hx-crowd { -webkit-mask-image: radial-gradient(75% 130% at 50% 100%, #000 50%, transparent 80%); mask-image: radial-gradient(75% 130% at 50% 100%, #000 50%, transparent 80%); }
+@media (min-width: 900px) {
+  .hx-band { margin-left: calc(-8vw - 10px); margin-right: calc(-8vw - 10px); }
+  .hx-bottom { margin-left: -8vw; margin-right: -8vw; padding-left: 10vw; padding-right: 10vw; }
+}
+.hx-crowd {
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 96%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 96%), linear-gradient(to right, transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}

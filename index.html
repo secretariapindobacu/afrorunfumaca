@@ -24,8 +24,8 @@
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Knewave&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <canvas id="confetti" aria-hidden="true"></canvas>
@@ -46,47 +46,73 @@
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <div class="speed speed-one"></div><div class="speed speed-two"></div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="dot"></span> POVOADO DE FUMAÇA · BAHIA · 2026</p>
-        <div class="hero-head">
-          <h1>AFRO<br><em>RUN!</em></h1>
-          <div class="bib-wrap" aria-label="Número de peito ilustrativo AFRO RUN 2026">
-        <div class="bib">
-          <span class="pin pin-a"></span><span class="pin pin-b"></span><span class="pin pin-c"></span><span class="pin pin-d"></span>
-          <div class="bib-top"><span class="bib-name">AFRO <b>RUN</b></span><span>28 NOV · 15H30</span></div>
-          <img src="logo-transparente.png" alt="" class="bib-logo">
-                    <div class="bib-year">2026</div>
-          <div class="bib-bottom"><span>CULTURA · ESPORTE · IGUALDADE</span><span>4 KM</span></div>
+    <section class="hx" id="inicio">
+      <div class="hx-faixas hx-faixas-r" aria-hidden="true"></div>
+      <div class="hx-faixas hx-faixas-l" aria-hidden="true"></div>
+      <div class="hx-confete" aria-hidden="true"></div>
+
+      <p class="hx-pill"><span class="bb bb-coffee"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg><span>POVOADO DE FUMAÇA • BAHIA · 2026</span></p>
+
+      <div class="hx-main">
+        <div class="hx-title">
+          <h1><span class="t-afro">AFRO</span><span class="t-run">RUN!</span><span class="sw sw-sun" aria-hidden="true"></span></h1>
+          <p class="hx-tag">Cultura, Esporte e<br>Igualdade em Movimento.<span class="sw sw-pink" aria-hidden="true"></span></p>
         </div>
-        <div class="bib-sticker">BORA<br>NESSA! <span>✳</span></div>
+
+        <div class="hx-bib-wrap" aria-label="Número de peito ilustrativo AFRO RUN 2026">
+          <div class="hx-bib">
+            <i class="tack t1"></i><i class="tack t2"></i><i class="tack t3"></i><i class="tack t4"></i>
+            <div class="hx-bib-top"><span class="hx-bib-name">AFRO <b>RUN</b></span><span>28 NOV • 15H30</span></div>
+            <img src="logo-transparente.png" alt="" class="hx-bib-logo">
+            <div class="hx-bib-year">2026</div>
+            <div class="hx-bib-km"><span></span>4 KM<span></span></div>
+          </div>
+          <div class="hx-sticker"><b>BORA<br>NESSA!</b><span class="sw sw-sun" aria-hidden="true"></span></div>
+        </div>
       </div>
-        </div>
-        <p class="tagline">Cultura, Esporte e Igualdade<br><strong>em Movimento.</strong></p>
-        <div class="keyline"><span>4 KM</span><i></i><span>28.11 · 15H30</span><i></i><span>FUMAÇA</span></div>
-        <a class="button button-dark" href="#inscricao">QUERO CORRER NESSA! <b>↗</b></a>
-        <div class="countdown-wrap">
-        <p class="eyebrow">A CONTAGEM JÁ COMEÇOU</p>
-        <div class="countdown" aria-label="Contagem regressiva para o evento">
-          <div><strong id="days">00</strong><small>DIAS</small></div><b>:</b>
-          <div><strong id="hours">00</strong><small>HORAS</small></div><b>:</b>
-          <div><strong id="minutes">00</strong><small>MIN</small></div><b>:</b>
+
+      <div class="hx-key">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2a5.2 5.2 0 0 1-4.5-2.5l-1-1.6A2 2 0 0 0 11.8 6c-.3 0-.5 0-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>4 KM</span><i></i><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3V2zm12 7H5v10h14V9zM7 11h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/></svg>28.11 • 15H30</span><i></i><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>FUMAÇA</span>
+      </div>
+
+      <div class="hx-crowd hx-crowd-r" aria-hidden="true"></div>
+      <a class="hx-cta" href="#inscricao"><span class="bb bb-pink hx-cta-edge"></span><span class="bb bb-coffee"></span><b>QUERO CORRER NESSA!</b><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+
+      <div class="hx-crowd hx-crowd-l" aria-hidden="true"></div>
+      <div class="hx-count">
+        <span class="bb bb-sun"></span>
+        <p class="hx-count-title">A CONTAGEM JÁ COMEÇOU!</p>
+        <div class="hx-count-boxes" aria-label="Contagem regressiva para o evento">
+          <div><strong id="days">00</strong><small>DIAS</small></div><i></i>
+          <div><strong id="hours">00</strong><small>HORAS</small></div><i></i>
+          <div><strong id="minutes">00</strong><small>MIN</small></div><i></i>
           <div><strong id="seconds">00</strong><small>SEG</small></div>
         </div>
       </div>
+
+      <div class="hx-band" aria-hidden="true"></div>
+
+      <div class="hx-bottom">
+        <div class="hx-early">
+          <span class="bb bb-pink"></span>
+          <p><span>INSCRIÇÕES ANTECIPADAS</span><b>QUINTA, <em>12/11</em></b></p>
+          <svg class="hx-arrow" viewBox="0 0 120 70" aria-hidden="true"><path d="M112 8 C 100 40, 70 56, 22 52" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><path d="M36 36 L18 52 L38 64" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <div class="hx-where">
+          <span class="bb bb-coffee"></span>
+          <div class="hx-where-pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg></div>
+          <div class="hx-where-text">
+            <h2>QUANDO E ONDE?</h2>
+            <p>28 DE NOVEMBRO DE 2026 • ÀS 15H30</p>
+            <p class="small">Praça dos Potes · Povoado Quilombola de Fumaça</p>
+          </div>
+          <a class="hx-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fuma%C3%A7a%2C%20Pindoba%C3%A7u%20-%20BA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>VER NO MAPA</a>
+        </div>
       </div>
     </section>
 
     <div class="marquee" aria-label="Bora caminhar. Cultura. Esporte. Igualdade. Em movimento."><div class="marquee-track">BORA CAMINHAR · CULTURA · ESPORTE · IGUALDADE · EM MOVIMENTO · BORA CAMINHAR · CULTURA · ESPORTE · IGUALDADE · EM MOVIMENTO ·</div></div>
-
-    <section class="early-bird reveal">
-      <div class="finish-pattern" aria-hidden="true"></div>
-      <span class="mini-label">MARCA NA AGENDA!</span>
-      <h2>INSCRIÇÕES<br><em>A PARTIR DE 12/11</em></h2>
-      <div class="ribbon"><span>✳</span> QUINTA-FEIRA, 12/11/2026 <span>✳</span></div>
-      <p class="early-note">Camisa oficial garantida para os <b>200 primeiros inscritos</b>!</p>
-    </section>
 
     <section class="route section-pad reveal" id="percurso">
       <div class="section-heading"><span class="section-no">01 / O PERCURSO</span><span class="section-note">VAI NO SEU RITMO!</span></div>
@@ -186,6 +212,6 @@
     <div class="footer-bottom"><span>AFRO RUN — FUMAÇA 2026</span><span>4 KM · 28.11 · 15H30</span></div>
   </footer>
   <a class="mobile-fixed" href="#inscricao">QUERO CORRER NESSA! ↗</a>
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

@@ -131,7 +131,7 @@ function montarPainel() {
   pn = ss.insertSheet("Painel", 0);
   pn.setHiddenGridlines(true);
   pn.getRange("A:H").setFontFamily("Arial").setVerticalAlignment("middle");
-  [150, 110, 130, 30, 150, 110, 30, 30].forEach(function (w, i) { pn.setColumnWidth(i + 1, w); });
+  [150, 110, 165, 30, 150, 110, 30, 30].forEach(function (w, i) { pn.setColumnWidth(i + 1, w); });
   const I = "'" + ABA + "'!";
 
   pn.getRange("A1:F1").merge().setValue("AFRO RUN FUMAÇA 2026 · PAINEL DE INSCRIÇÕES")

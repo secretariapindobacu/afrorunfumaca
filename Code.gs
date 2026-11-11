@@ -123,7 +123,7 @@ function montarPainel() {
   pn.setHiddenGridlines(true);
   pn.setTabColor(ORANGE);
   ins.setTabColor(TURQ);
-  const W = [16, 130, 110, 110, 16, 130, 110, 110, 16];   // A..I (A, E e I são margens)
+  const W = [16, 140, 125, 125, 20, 140, 125, 125, 16];   // A..I (A, E e I são margens)
   W.forEach(function (w, i) { pn.setColumnWidth(i + 1, w); });
   pn.getRange("A1:I200").setFontFamily("Arial").setVerticalAlignment("middle").setBackground("#FFFBF3");
 
@@ -215,23 +215,23 @@ function montarPainel() {
     let b = pn.newChart().setChartType(tipo).addRange(pn.getRange(faixa)).setNumHeaders(1)
       .setPosition(linha, col, 6, 0)
       .setOption("title", titulo).setOption("titleTextStyle", { color: COFFEE, fontSize: 14, bold: true })
-      .setOption("width", w || 380).setOption("height", h || 300).setOption("colors", cores)
+      .setOption("width", w || 384).setOption("height", h || 320).setOption("colors", cores)
       .setOption("backgroundColor", { fill: "#FFFFFF", stroke: "#EADBC2", strokeWidth: 1 })
-      .setOption("chartArea", { left: "8%", top: "16%", width: "84%", height: "70%" })
+      .setOption("chartArea", { left: "6%", top: "14%", width: "88%", height: "66%" })
       .setOption("fontName", "Arial");
     if (extra) Object.keys(extra).forEach(function (k) { b = b.setOption(k, extra[k]); });
     pn.insertChart(b.build());
   };
-  const pizza = { pieHole: 0.5, pieSliceText: "value", pieSliceTextStyle: { color: "#FFFFFF", fontSize: 13, bold: true }, legend: { position: "right", textStyle: { color: COFFEE, fontSize: 11 } }, sliceVisibilityThreshold: 0 };
+  const pizza = { pieHole: 0.5, pieSliceText: "value", pieSliceTextStyle: { color: "#FFFFFF", fontSize: 13, bold: true }, legend: { position: "bottom", alignment: "center", textStyle: { color: COFFEE, fontSize: 11 } }, sliceVisibilityThreshold: 0 };
   graf(Charts.ChartType.PIE, "B" + (T + 1) + ":C" + (T + 6), 14, 2, "👕  Camisas por tamanho", [ORANGE, SUN, TURQ, PINK, GREEN], pizza);
   graf(Charts.ChartType.PIE, "F" + (T + 1) + ":G" + (T + 5), 14, 6, "Inscritos por sexo", [PINK, TURQ, SUN, "#C9B8A3"], pizza);
-  graf(Charts.ChartType.PIE, "B" + (A + 1) + ":C" + (A + 6), 30, 2, "Faixa etária", [SUN, ORANGE, PINK, TURQ, GREEN], pizza);
-  graf(Charts.ChartType.COLUMN, "B" + (T + 1) + ":D" + (T + 6), 30, 6, "Camisas: pedidas x garantidas", [ORANGE, TURQ],
+  graf(Charts.ChartType.PIE, "B" + (A + 1) + ":C" + (A + 6), 31, 2, "Faixa etária", [SUN, ORANGE, PINK, TURQ, GREEN], pizza);
+  graf(Charts.ChartType.COLUMN, "B" + (T + 1) + ":D" + (T + 6), 31, 6, "Camisas: pedidas x garantidas", [ORANGE, TURQ],
     { legend: { position: "top" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, bar: { groupWidth: "65%" } });
-  graf(Charts.ChartType.BAR, "F" + (A + 1) + ":G" + (A + 30), 46, 2, "📍  Inscritos por cidade / comunidade", [TURQ],
-    { legend: { position: "none" }, hAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, chartArea: { left: "30%", top: "14%", width: "62%", height: "76%" } }, 772, 300);
-  graf(Charts.ChartType.AREA, "B" + (D + 1) + ":C" + (D + 60), 62, 2, "📈  Inscrições por dia", [ORANGE],
-    { legend: { position: "none" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, areaOpacity: 0.25, lineWidth: 3, pointSize: 6 }, 772, 280);
+  graf(Charts.ChartType.BAR, "F" + (A + 1) + ":G" + (A + 30), 48, 2, "📍  Inscritos por cidade / comunidade", [TURQ],
+    { legend: { position: "none" }, hAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, chartArea: { left: "30%", top: "14%", width: "62%", height: "76%" } }, 790, 300);
+  graf(Charts.ChartType.AREA, "B" + (D + 1) + ":C" + (D + 60), 65, 2, "📈  Inscrições por dia", [ORANGE],
+    { legend: { position: "none" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, areaOpacity: 0.25, lineWidth: 3, pointSize: 6 }, 790, 280);
 
   ss.setActiveSheet(pn);
 }

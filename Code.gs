@@ -14,16 +14,18 @@
  * (assim a URL continua a mesma).
  */
 
+// ID da planilha "Inscrições AFRO RUN Fumaça 2026" (conta secretariapindobacu@gmail.com).
+// Se colar este código direto em Extensões > Apps Script da própria planilha, pode deixar vazio: "".
+const SHEET_ID = "1aDGUQfjY8B-NyBbCb7z1VAQfZ0Qt4BcwPrcSxi1jOcY";
 const ABA = "Inscrições";
 const LIMITE_CAMISAS = 200;          // Regulamento: camisa para os 200 primeiros inscritos
-const EMAIL_AVISO = "";              // Opcional: coloque um e-mail para receber aviso a cada inscrição
 
 const CABECALHO = ["Nº", "Data/hora", "Nome", "Nascimento", "CPF", "WhatsApp", "Cidade/Comunidade",
   "Camisa (tamanho)", "Ganha camisa?", "Sexo", "Menor de 16?", "Responsável", "Autorização do responsável",
   "Apto(a)", "Uso de imagem", "Aceitou regulamento"];
 
 function aba_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
   let sh = ss.getSheetByName(ABA);
   if (!sh) {
     sh = ss.insertSheet(ABA);
@@ -63,10 +65,6 @@ function doPost(e) {
       d.camisa, ganha, d.sexo || "", d.menor16 ? "SIM" : "NÃO", d.responsavel || "",
       d.autorizacao_responsavel ? "SIM" : "", "SIM", "SIM", "SIM"]);
 
-    if (EMAIL_AVISO) {
-      MailApp.sendEmail(EMAIL_AVISO, "AFRO RUN: nova inscrição nº " + numero,
-        d.nome + " — WhatsApp " + d.whatsapp + " — " + d.comunidade + " — camisa " + d.camisa + " (ganha: " + ganha + ")");
-    }
     return json_({ success: true, number: numero, camisa: ganha });
   } catch (err) {
     return json_({ success: false, message: String(err.message || err) });

@@ -1,5 +1,5 @@
 // Configure com a URL do Web App publicado no Google Apps Script.
-const SCRIPT_URL = "COLE_A_URL_DO_WEB_APP_AQUI";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5qfS9WS1lTVpmZxwrezPGdsGUe9_tmXypDBzfcN5VczF7HHNQVwFC2Nfwtv_NA2XCpw/exec";
 // INSCRIÇÕES: com MODO_TESTE = true o formulário fica sempre aberto (para testar).
 // Com MODO_TESTE = false ele fica fechado até a data de abertura e abre sozinho.
 // Mesmo fechado, dá para testar abrindo o site com ?teste=1 no final do link.

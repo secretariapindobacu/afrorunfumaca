@@ -78,7 +78,7 @@ function createBib(name,number){
    resolve();
  };
  img.onerror=()=>reject(new Error("Não foi possível carregar a logo para o número de peito."));
- img.src="logo.png";
+ img.src="logo-transparente.png";
  });
 }
 function throwConfetti(){
@@ -96,14 +96,16 @@ form.addEventListener("submit",async e=>{
  if(!validCPF(form.elements.cpf.value)){errorBox.textContent="Confira o CPF informado.";form.elements.cpf.focus();return;}
  const phone=form.elements.whatsapp.value.replace(/\D/g,"");
  if(phone.length<10){errorBox.textContent="Informe um WhatsApp válido.";form.elements.whatsapp.focus();return;}
+ if(!form.elements.nascimento.value){errorBox.textContent="Escolha o dia, o mês e o ano de nascimento.";document.getElementById("nascDia").focus();return;}
  const birth=new Date(form.elements.nascimento.value+"T00:00:00");
- if(birth>=new Date()){errorBox.textContent="A data de nascimento deve ser anterior a hoje.";return;}
+ if(isNaN(birth)||birth>=new Date()){errorBox.textContent="Confira a data de nascimento.";return;}
  if(isUnder16()){
    if(form.elements.responsavel.value.trim().length<3){errorBox.textContent="Informe o nome do responsável pelo menor de 16 anos.";form.elements.responsavel.focus();return;}
    if(!form.elements.autorizacao_responsavel.checked){errorBox.textContent="O responsável precisa autorizar e acompanhar o menor de 16 anos (Art. 6º).";return;}
  }
  if(SCRIPT_URL==="COLE_A_URL_DO_WEB_APP_AQUI"){errorBox.textContent="A organização ainda precisa configurar o envio da inscrição. Tente novamente mais tarde.";return;}
  const data=Object.fromEntries(new FormData(form).entries());
+ const [ay,am,ad]=data.nascimento.split("-");data.nascimento=ad+"/"+am+"/"+ay;
  data.aptidao=form.elements.aptidao.checked;data.imagem=form.elements.imagem.checked;data.regulamento=form.elements.regulamento.checked;data.menor16=isUnder16();data.autorizacao_responsavel=form.elements.autorizacao_responsavel.checked;if(!data.menor16){data.responsavel="";data.autorizacao_responsavel=false;}
  const submit=form.querySelector("button[type=submit]");submit.disabled=true;submit.textContent="ENVIANDO…";
  try{
@@ -207,3 +209,26 @@ document.querySelectorAll(".sh-ig").forEach(btn=>btn.addEventListener("click",as
   else{shareHint.textContent="Não deu para abrir o compartilhamento. Baixe a arte e poste no Instagram: "+location.origin+location.pathname+file;}
  }finally{btn.removeAttribute("aria-busy");}
 }));
+
+// ---------- DATA DE NASCIMENTO: dia / mês / ano (anos só para trás) ----------
+(function(){
+ const dia=document.getElementById("nascDia"),mes=document.getElementById("nascMes"),ano=document.getElementById("nascAno");
+ const hidden=form.elements.nascimento;
+ const meses=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+ meses.forEach((m,i)=>mes.add(new Option(m,String(i+1).padStart(2,"0"))));
+ const atual=new Date().getFullYear();
+ for(let y=atual;y>=1920;y--)ano.add(new Option(y,y));
+ function diasDoMes(){
+  const y=+ano.value||2000,m=+mes.value||1,max=new Date(y,m,0).getDate(),sel=dia.value;
+  dia.length=1;for(let d=1;d<=max;d++)dia.add(new Option(d,String(d).padStart(2,"0")));
+  if(sel&&+sel<=max)dia.value=sel;
+ }
+ function sync(){
+  hidden.value=(dia.value&&mes.value&&ano.value)?`${ano.value}-${mes.value}-${dia.value}`:"";
+  hidden.dispatchEvent(new Event("change"));
+ }
+ diasDoMes();
+ mes.addEventListener("change",()=>{diasDoMes();sync();});
+ ano.addEventListener("change",()=>{diasDoMes();sync();});
+ dia.addEventListener("change",sync);
+})();

@@ -1835,3 +1835,8 @@ html, body { overflow-x: clip; }
 .hx-cta b { font-size: clamp(21px, 6.5vw, 40px); white-space: nowrap; }
 .hx-cta { gap: 12px; padding-left: 14px; padding-right: 14px; }
 @media (min-width: 900px) { .hx-cta { padding-left: 34px; padding-right: 34px; } }
+
+/* Data de nascimento em 3 caixas */
+.birth-field > span { font-size: 11px; font-weight: 800; }
+.birth-selects { display: grid; grid-template-columns: .8fr 1.5fr 1fr; gap: 8px; }
+.birth-selects select { width: 100%; min-width: 0; border: 1px solid #b5a28d; border-radius: 4px; padding: 11px 8px; background: #fffaf0; color: var(--coffee); font-size: 14px; font-weight: 600; }

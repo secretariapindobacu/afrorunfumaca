@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Knewave&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <canvas id="confetti" aria-hidden="true"></canvas>
@@ -178,7 +178,15 @@
         <div class="form-top"><span>AFRO RUN · FUMAÇA 2026</span><span>Nº DE PEITO: <b>?</b></span></div>
         <div class="form-grid">
           <label class="field full">Nome completo<input name="nome" autocomplete="name" required minlength="3" placeholder="Seu nome e sobrenome"></label>
-          <label class="field">Data de nascimento<input name="nascimento" type="date" required></label>
+          <div class="field full birth-field" role="group" aria-labelledby="birthLabel">
+            <span id="birthLabel">Data de nascimento</span>
+            <div class="birth-selects">
+              <select id="nascDia" aria-label="Dia" required><option value="">Dia</option></select>
+              <select id="nascMes" aria-label="Mês" required><option value="">Mês</option></select>
+              <select id="nascAno" aria-label="Ano" required><option value="">Ano</option></select>
+            </div>
+            <input type="hidden" name="nascimento">
+          </div>
           <label class="field">CPF<input name="cpf" inputmode="numeric" autocomplete="off" required placeholder="000.000.000-00" maxlength="14"></label>
           <label class="field">WhatsApp<input name="whatsapp" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000" maxlength="15"></label>
           <label class="field">Cidade / comunidade<input name="comunidade" required placeholder="Onde você mora?"></label>
@@ -228,6 +236,6 @@
     </div>
   </footer>
   <a class="mobile-fixed" href="#inscricao">QUERO CAMINHAR NESSA! ↗</a>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

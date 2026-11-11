@@ -21,7 +21,7 @@ const ABA = "Inscrições";
 const LIMITE_CAMISAS = 200;          // Regulamento: camisa para os 200 primeiros inscritos
 
 const CABECALHO = ["Nº", "Data/hora", "Nome", "Nascimento", "CPF", "WhatsApp", "Cidade/Comunidade",
-  "Camisa (tamanho)", "Ganha camisa?", "Sexo", "Menor de 16?", "Responsável", "Autorização do responsável",
+  "Ganha camisa?", "Sexo", "Menor de 16?", "Responsável", "Autorização do responsável",
   "Apto(a)", "Uso de imagem", "Aceitou regulamento"];
 
 function aba_() {
@@ -32,6 +32,8 @@ function aba_() {
     sh.appendRow(CABECALHO);
     sh.getRange(1, 1, 1, CABECALHO.length).setFontWeight("bold").setBackground("#2A140B").setFontColor("#FFC400");
     sh.setFrozenRows(1);
+  } else if (sh.getMaxColumns() >= 8 && String(sh.getRange(1, 8).getValue()).indexOf("tamanho") >= 0) {
+    sh.deleteColumn(8); // não há mais tamanho de camisa: remove a coluna antiga
   }
   return sh;
 }
@@ -40,7 +42,7 @@ function doPost(e) {
   const lock = LockService.getScriptLock();
   try {
     const d = JSON.parse((e && e.postData && e.postData.contents) || "{}");
-    ["nome", "nascimento", "cpf", "whatsapp", "comunidade", "camisa"].forEach(function (k) {
+    ["nome", "nascimento", "cpf", "whatsapp", "comunidade"].forEach(function (k) {
       if (!d[k]) throw new Error("Campo obrigatório ausente: " + k);
     });
     if (d.aptidao !== true || d.imagem !== true || d.regulamento !== true) {
@@ -62,7 +64,7 @@ function doPost(e) {
     const numero = sh.getLastRow(); // linha 1 é o cabeçalho
     const ganha = numero <= LIMITE_CAMISAS ? "SIM" : "NÃO";
     sh.appendRow([numero, new Date(), d.nome, d.nascimento, "'" + d.cpf, "'" + d.whatsapp, d.comunidade,
-      d.camisa, ganha, d.sexo || "", d.menor16 ? "SIM" : "NÃO", d.responsavel || "",
+      ganha, d.sexo || "", d.menor16 ? "SIM" : "NÃO", d.responsavel || "",
       d.autorizacao_responsavel ? "SIM" : "", "SIM", "SIM", "SIM"]);
 
     return json_({ success: true, number: numero, camisa: ganha });
@@ -83,7 +85,7 @@ function json_(obj) {
 }
 
 /* =====================================================================
- * PAINEL: totais e gráficos (pizza de camisas, sexo e faixa etária,
+ * PAINEL: totais e gráficos (pizza de camisas, sexo, faixa etária e menores,
  * barras por comunidade e inscrições por dia). Atualiza sozinho.
  * Para recriar do zero: no editor, escolha "montarPainel" e clique em Executar.
  * ===================================================================== */
@@ -99,9 +101,9 @@ function montarPainel() {
   ins.setFrozenRows(1);
   ins.setRowHeight(1, 34);
   ins.getRange(1, 1, 1, CABECALHO.length).setFontWeight("bold").setBackground(COFFEE).setFontColor(SUN).setVerticalAlignment("middle").setWrap(true);
-  [45, 135, 230, 95, 115, 120, 150, 80, 85, 95, 80, 200, 110, 70, 80, 95].forEach(function (w, i) { ins.setColumnWidth(i + 1, w); });
+  [45, 135, 230, 95, 115, 120, 150, 85, 95, 80, 200, 110, 70, 80, 95].forEach(function (w, i) { ins.setColumnWidth(i + 1, w); });
   ins.getRange("A:A").setHorizontalAlignment("center");
-  ins.getRange("H:K").setHorizontalAlignment("center");
+  ins.getRange("H:J").setHorizontalAlignment("center");
   ins.getRange("B2:B").setNumberFormat("dd/mm/yyyy HH:mm");
   ins.getRange("D2:D").setNumberFormat("dd/mm/yyyy");
   if (ins.getBandings().length === 0) {
@@ -109,9 +111,9 @@ function montarPainel() {
       .setHeaderRowColor(COFFEE).setFirstRowColor("#FFFFFF").setSecondRowColor(CREAM);
   }
   ins.setConditionalFormatRules([
-    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#D9F2E1").setFontColor("#156B33").setRanges([ins.getRange("I2:I")]).build(),
-    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("NÃO").setBackground("#FDE2E2").setFontColor("#9B1C1C").setRanges([ins.getRange("I2:I")]).build(),
-    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#FFF1C2").setFontColor("#7A5200").setRanges([ins.getRange("K2:K")]).build()
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#D9F2E1").setFontColor("#156B33").setRanges([ins.getRange("H2:H")]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("NÃO").setBackground("#FDE2E2").setFontColor("#9B1C1C").setRanges([ins.getRange("H2:H")]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("SIM").setBackground("#FFF1C2").setFontColor("#7A5200").setRanges([ins.getRange("J2:J")]).build()
   ]);
   const p1 = ss.getSheetByName("Página1");
   if (p1 && p1.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(p1);
@@ -151,17 +153,17 @@ function montarPainel() {
   box("H6:H6", "RESTAM (de " + LIMITE_CAMISAS + ")", PINK);
   num("B7:C7", "=COUNTA(" + I + "C2:C)", ORANGE);
   num("D7:D7", "=COUNTIFS(" + I + "B2:B,\">=\"&TODAY())");
-  num("F7:G7", "=COUNTIF(" + I + "I2:I,\"SIM\")", TURQ);
-  num("H7:H7", "=MAX(0," + LIMITE_CAMISAS + "-COUNTIF(" + I + "I2:I,\"SIM\"))", PINK);
+  num("F7:G7", "=COUNTIF(" + I + "H2:H,\"SIM\")", TURQ);
+  num("H7:H7", "=MAX(0," + LIMITE_CAMISAS + "-COUNTIF(" + I + "H2:H,\"SIM\"))", PINK);
   pn.setRowHeight(7, 58);
   pn.setRowHeight(8, 8);
   box("B9:C9", "MENORES DE 16 ANOS", GREEN);
   box("D9:D9", "SEM CAMISA", "#8A6A55");
   box("F9:H9", "CAMISAS ENTREGUES  ·  BARRA DE PROGRESSO", PURPLE);
-  num("B10:C10", "=COUNTIF(" + I + "K2:K,\"SIM\")", GREEN);
-  num("D10:D10", "=COUNTIF(" + I + "I2:I,\"NÃO\")", "#8A6A55");
+  num("B10:C10", "=COUNTIF(" + I + "J2:J,\"SIM\")", GREEN);
+  num("D10:D10", "=COUNTIF(" + I + "H2:H,\"NÃO\")", "#8A6A55");
   const COL = SEP === "," ? "," : "\\";
-  pn.getRange("F10:H10").merge().setFormula("=SPARKLINE(COUNTIF(" + I + "I2:I" + SEP + "\"SIM\")" + SEP + "{\"charttype\"" + COL + "\"bar\";\"max\"" + COL + LIMITE_CAMISAS + ";\"color1\"" + COL + "\"" + TURQ + "\"})")
+  pn.getRange("F10:H10").merge().setFormula("=SPARKLINE(COUNTIF(" + I + "H2:H" + SEP + "\"SIM\")" + SEP + "{\"charttype\"" + COL + "\"bar\";\"max\"" + COL + LIMITE_CAMISAS + ";\"color1\"" + COL + "\"" + TURQ + "\"})")
     .setBackground("#FFFFFF").setBorder(true, true, true, true, false, false, "#EADBC2", SpreadsheetApp.BorderStyle.SOLID);
   pn.setRowHeight(10, 58);
 
@@ -172,22 +174,22 @@ function montarPainel() {
 
   // ---- tabelas que alimentam os gráficos (abaixo dos gráficos)
   const T = 80;  // linha inicial das tabelas
-  box("B" + T + ":D" + T, "CAMISAS POR TAMANHO", SUN, COFFEE);
-  pn.getRange("B" + (T + 1) + ":D" + (T + 1)).setValues([["Tamanho", "Pedidos", "Garantidas"]]).setFontWeight("bold").setBackground("#F3E3C7").setHorizontalAlignment("center");
-  ["PP", "P", "M", "G", "GG"].forEach(function (t, i) {
-    const r = T + 2 + i;
-    pn.getRange(r, 2).setValue(t).setHorizontalAlignment("center").setFontWeight("bold");
-    pn.getRange(r, 3).setFormula(F_("=COUNTIF(" + I + "H2:H,B" + r + ")")).setHorizontalAlignment("center");
-    pn.getRange(r, 4).setFormula(F_("=COUNTIFS(" + I + "H2:H,B" + r + "," + I + "I2:I,\"SIM\")")).setHorizontalAlignment("center");
-  });
-  pn.getRange("B" + (T + 7)).setValue("TOTAL").setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("C" + (T + 7)).setFormula(F_("=SUM(C" + (T + 2) + ":C" + (T + 6) + ")")).setFontWeight("bold").setHorizontalAlignment("center");
-  pn.getRange("D" + (T + 7)).setFormula(F_("=SUM(D" + (T + 2) + ":D" + (T + 6) + ")")).setFontWeight("bold").setHorizontalAlignment("center");
+  box("B" + T + ":D" + T, "CAMISA OFICIAL", SUN, COFFEE);
+  pn.getRange("B" + (T + 1) + ":C" + (T + 1)).setValues([["Situação", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7").setHorizontalAlignment("center");
+  pn.getRange("B" + (T + 2) + ":B" + (T + 3)).setValues([["Com camisa"], ["Sem camisa"]]).setFontWeight("bold");
+  pn.getRange("C" + (T + 2)).setFormula(F_("=COUNTIF(" + I + "H2:H,\"SIM\")")).setHorizontalAlignment("center");
+  pn.getRange("C" + (T + 3)).setFormula(F_("=COUNTIF(" + I + "H2:H,\"NÃO\")")).setHorizontalAlignment("center");
+
+  box("B" + (T + 5) + ":D" + (T + 5), "IDADE (Art. 6º)", GREEN);
+  pn.getRange("B" + (T + 6) + ":C" + (T + 6)).setValues([["Grupo", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7").setHorizontalAlignment("center");
+  pn.getRange("B" + (T + 7) + ":B" + (T + 8)).setValues([["Menores de 16"], ["16 anos ou mais"]]).setFontWeight("bold");
+  pn.getRange("C" + (T + 7)).setFormula(F_("=COUNTIF(" + I + "J2:J,\"SIM\")")).setHorizontalAlignment("center");
+  pn.getRange("C" + (T + 8)).setFormula(F_("=COUNTIF(" + I + "J2:J,\"NÃO\")")).setHorizontalAlignment("center");
 
   box("F" + T + ":H" + T, "SEXO", PINK);
   pn.getRange("F" + (T + 1) + ":G" + (T + 1)).setValues([["Sexo", "Inscritos"]]).setFontWeight("bold").setBackground("#F3E3C7");
   pn.getRange("F" + (T + 2) + ":F" + (T + 5)).setValues([["Feminino"], ["Masculino"], ["Outro"], ["Não informado"]]);
-  for (let k = 0; k < 3; k++) pn.getRange("G" + (T + 2 + k)).setFormula(F_("=COUNTIF(" + I + "J2:J,F" + (T + 2 + k) + ")"));
+  for (let k = 0; k < 3; k++) pn.getRange("G" + (T + 2 + k)).setFormula(F_("=COUNTIF(" + I + "I2:I,F" + (T + 2 + k) + ")"));
   pn.getRange("G" + (T + 5)).setFormula(F_("=COUNTA(" + I + "C2:C)-SUM(G" + (T + 2) + ":G" + (T + 4) + ")"));
 
   const A = T + 10;
@@ -223,11 +225,10 @@ function montarPainel() {
     pn.insertChart(b.build());
   };
   const pizza = { pieHole: 0.5, pieSliceText: "value", pieSliceTextStyle: { color: "#FFFFFF", fontSize: 13, bold: true }, legend: { position: "bottom", alignment: "center", textStyle: { color: COFFEE, fontSize: 11 } }, sliceVisibilityThreshold: 0 };
-  graf(Charts.ChartType.PIE, "B" + (T + 1) + ":C" + (T + 6), 14, 2, "👕  Camisas por tamanho", [ORANGE, SUN, TURQ, PINK, GREEN], pizza);
+  graf(Charts.ChartType.PIE, "B" + (T + 1) + ":C" + (T + 3), 14, 2, "👕  Camisa oficial (200 primeiros)", [TURQ, "#C9B8A3"], pizza);
   graf(Charts.ChartType.PIE, "F" + (T + 1) + ":G" + (T + 5), 14, 6, "Inscritos por sexo", [PINK, TURQ, SUN, "#C9B8A3"], pizza);
   graf(Charts.ChartType.PIE, "B" + (A + 1) + ":C" + (A + 6), 31, 2, "Faixa etária", [SUN, ORANGE, PINK, TURQ, GREEN], pizza);
-  graf(Charts.ChartType.COLUMN, "B" + (T + 1) + ":D" + (T + 6), 31, 6, "Camisas: pedidas x garantidas", [ORANGE, TURQ],
-    { legend: { position: "top" }, vAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, bar: { groupWidth: "65%" } });
+  graf(Charts.ChartType.PIE, "B" + (T + 6) + ":C" + (T + 8), 31, 6, "Menores de 16 anos", [GREEN, SUN], pizza);
   graf(Charts.ChartType.BAR, "F" + (A + 1) + ":G" + (A + 30), 48, 2, "📍  Inscritos por cidade / comunidade", [TURQ],
     { legend: { position: "none" }, hAxis: { minValue: 0, format: "0", gridlines: { color: "#F1E6D3" } }, chartArea: { left: "30%", top: "14%", width: "62%", height: "76%" } }, 790, 300);
   graf(Charts.ChartType.AREA, "B" + (D + 1) + ":C" + (D + 60), 65, 2, "📈  Inscrições por dia", [ORANGE],

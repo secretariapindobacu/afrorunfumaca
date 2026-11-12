@@ -188,7 +188,7 @@ form.elements.nascimento.addEventListener("change",()=>{
 })();
 
 // ---------- COMPARTILHAR NO INSTAGRAM (Story / Reels) ----------
-const SITE_URL="https://secretariapindobacu.github.io/afrorunfumaca/";
+const SITE_URL="https://afrorunfumaca.online/";
 const shareHint=document.getElementById("shareHint");
 document.querySelectorAll(".sh-ig").forEach(btn=>btn.addEventListener("click",async()=>{
  const file=btn.dataset.file,type=btn.dataset.type,label=btn.dataset.label;
